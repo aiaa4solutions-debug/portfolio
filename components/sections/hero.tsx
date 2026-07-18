@@ -81,7 +81,7 @@ export function Hero() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 font-mono text-xs text-muted-foreground"
           >
             <MapPin className="h-3.5 w-3.5 text-accent" />
-            Antsirabe, Madagascar — open to remote &amp;on-site
+            Antsirabe, Madagascar — open to remote &amp; on-site
           </motion.div>
 
           <motion.h1
