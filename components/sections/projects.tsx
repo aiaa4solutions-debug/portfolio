@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 import { projects } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 export function Projects() {
   return (
@@ -35,15 +37,35 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
-              className="group flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-indigo-500/40"
+              className={cn(
+                "group relative flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-indigo-500/40",
+                project.featured && "md:col-span-2"
+              )}
             >
               <div className="flex items-start justify-between gap-4">
-                <h3 className="text-xl font-semibold">{project.title}</h3>
+                <h3 className="text-xl font-semibold">
+                  {project.href ? (
+                    <Link
+                      href={project.href}
+                      className="after:absolute after:inset-0"
+                    >
+                      {project.title}
+                    </Link>
+                  ) : (
+                    project.title
+                  )}
+                </h3>
                 <ArrowUpRight
                   className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
                   aria-hidden="true"
                 />
               </div>
+
+              {project.href && (
+                <Badge variant="accent" className="mt-3 w-fit">
+                  Live demo
+                </Badge>
+              )}
 
               <p className="mt-3 text-sm text-muted-foreground">
                 {project.description}

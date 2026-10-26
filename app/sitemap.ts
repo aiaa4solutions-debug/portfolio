@@ -1,12 +1,20 @@
 import type { MetadataRoute } from "next";
 
+const SITE_URL = "https://herimalala.dev";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://herimalala.dev",
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
+    },
+    {
+      url: `${SITE_URL}/projects/btc-realtime`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
   ];
 }
