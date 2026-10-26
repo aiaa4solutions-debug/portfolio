@@ -18,7 +18,7 @@ export const skillGroups: SkillGroup[] = [
   {
     label: "Backend",
     command: "backend --stack",
-    items: ["Node.js", "Express.js", "NestJS", "FastAPI", "REST API", "GraphQL"],
+    items: ["Node.js", "Express.js", "NestJS", "FastAPI", "REST API", "GraphQL", "WebSocket", "SSE"],
   },
   {
     label: "Databases",
@@ -38,6 +38,6 @@ export const skillGroups: SkillGroup[] = [
   {
     label: "Tooling",
     command: "tooling --env",
-    items: ["Git", "GitHub", "Docker", "GitHub Actions", "Vercel"],
+    items: ["Git", "GitHub", "Docker", "GitHub Actions", "Vercel", "Vitest", "Playwright"],
   },
 ];

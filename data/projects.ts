@@ -5,9 +5,25 @@ export interface Project {
   detail: string;
   stack: string[];
   metric: string;
+  /** Internal page of the project, when it has a live demo. */
+  href?: string;
+  /** Rendered full width, above the other cards. */
+  featured?: boolean;
 }
 
 export const projects: Project[] = [
+  {
+    slug: "btc-realtime-feed",
+    title: "Real-Time BTC Multi-Exchange Feed",
+    description:
+      "A live dashboard comparing Bitcoin trades from Binance, Coinbase and Bitfinex, with price curves and the spread between exchanges.",
+    detail:
+      "A shared server hub keeps one resilient WebSocket connection per exchange and relays normalized trades over Server-Sent Events to a React dashboard. It converts USDT prices to USD, tracks the spread between exchanges, falls back to simulated data when the exchanges are unreachable, and exposes per-exchange status, latency and reconnection metrics.",
+    stack: ["Next.js", "TypeScript", "WebSocket", "SSE", "Recharts"],
+    metric: "3 exchanges · live demo",
+    href: "/projects/btc-realtime",
+    featured: true,
+  },
   {
     slug: "ai-document-assistant",
     title: "AI Document Assistant",

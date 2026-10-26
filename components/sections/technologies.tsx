@@ -14,6 +14,7 @@ const TECHNOLOGIES = [
   "NestJS",
   "FastAPI",
   "GraphQL",
+  "WebSocket",
   "PostgreSQL",
   "MongoDB",
   "Prisma",
@@ -21,6 +22,8 @@ const TECHNOLOGIES = [
   "n8n",
   "Docker",
   "GitHub Actions",
+  "Vitest",
+  "Playwright",
   "Vercel",
   "Git",
 ];
