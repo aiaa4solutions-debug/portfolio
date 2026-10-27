@@ -72,9 +72,11 @@ export function ProjectDetails({ project }: { project: Project }) {
         </section>
       </div>
       <Button variant="accent" className="mt-8" asChild>
-        <Link href="/#contact">
+        {/* Document navigation avoids modal cleanup overriding the contact scroll. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a href="/#contact">
           <Translated text="Discuss a similar project" />
-        </Link>
+        </a>
       </Button>
     </article>
   );

@@ -140,4 +140,18 @@ test("localizes project details and clears the modal when navigating to contact"
     .click();
   await expect(page).toHaveURL(/\/#contact$/);
   await expect(page.getByRole("dialog")).not.toBeVisible();
+  await expect.poll(() => page.locator("#contact").evaluate(
+    (element) => Math.abs(element.getBoundingClientRect().top),
+  )).toBeLessThan(200);
+  await expect(page.locator('#contact a[href="mailto:aiaa4solutions@gmail.com"]')).toBeInViewport();
+});
+
+test("project contact CTA reaches the visible contact section from a full page", async ({ page }) => {
+  await page.goto("/projects/ai-document-assistant");
+  await page.getByRole("link", { name: "Discuss a similar project", exact: true }).click();
+  await expect(page).toHaveURL(/\/#contact$/);
+  await expect.poll(() => page.locator("#contact").evaluate(
+    (element) => Math.abs(element.getBoundingClientRect().top),
+  )).toBeLessThan(200);
+  await expect(page.locator('#contact a[href="mailto:aiaa4solutions@gmail.com"]')).toBeInViewport();
 });
