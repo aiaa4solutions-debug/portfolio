@@ -26,7 +26,9 @@ import {
 } from './types';
 
 const UPSTREAM_URLS: Record<Source, string> = {
-  BINANCE: process.env.BINANCE_WS_URL ?? 'wss://stream.binance.com:9443/ws/btcusdt@trade',
+  // Binance's public market-data endpoint uses standard TLS port 443.
+  // The trading endpoint's port 9443 is blocked by some hosting networks.
+  BINANCE: process.env.BINANCE_WS_URL ?? 'wss://data-stream.binance.vision/ws/btcusdt@trade',
   COINBASE: 'wss://ws-feed.exchange.coinbase.com',
   BITFINEX: 'wss://api-pub.bitfinex.com/ws/2',
 };
@@ -239,7 +241,12 @@ export class MarketHub {
         console.error(`[hub:${source}] WebSocket error`, event);
       };
 
-      ws.onclose = () => {
+      ws.onclose = (event) => {
+        console.warn(`[hub:${source}] WebSocket closed`, {
+          code: event.code,
+          reason: event.reason,
+          wasClean: event.wasClean,
+        });
         if (upstream.ws === ws) upstream.ws = null;
         this.scheduleReconnect(source);
       };

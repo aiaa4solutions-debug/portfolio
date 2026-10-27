@@ -91,7 +91,14 @@ All variables are optional.
 | Variable | Purpose |
 | --- | --- |
 | `MARKET_MODE` | `auto` (default): live data with a fallback to simulation after 10 s of silence. `live`: live data only. `replay`: simulated data only. |
-| `BINANCE_WS_URL` | Alternative Binance WebSocket endpoint, for regions where the default one is blocked. |
+| `BINANCE_WS_URL` | Alternative Binance WebSocket endpoint. Defaults to `wss://data-stream.binance.vision/ws/btcusdt@trade` (public market data over port 443). |
+
+If Binance stays in `reconnecting` while the other exchanges are live, check the
+server logs (`[hub:BINANCE]`) and the hosting provider's outbound WebSocket policy.
+Allow `data-stream.binance.vision` on port 443. An existing `BINANCE_WS_URL` overrides
+the default: remove an obsolete value using port 9443, or set an accessible official
+Binance endpoint, then restart/redeploy the server. A network or regional access
+restriction cannot be resolved by reconnecting indefinitely.
 
 ## Project structure
 
