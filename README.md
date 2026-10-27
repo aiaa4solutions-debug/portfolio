@@ -187,3 +187,6 @@ include generated concept mockups with fictional data, not screenshots of deploy
 applications. Original PNG assets are in `public/images/projects/`; Next.js serves
 responsive optimized images. Click a visual to enlarge it; Escape closes the native
 dialog. Captions, alternative text and dialog controls are localized in EN/FR.
+
+The Bitcoin project cover is a screenshot of the actual interface in simulation
+mode. Its image and primary call-to-action both open the interactive dashboard.
