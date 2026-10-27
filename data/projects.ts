@@ -29,6 +29,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-document-assistant",
+    href: "/projects/ai-document-assistant",
     preview: {
       src: "/images/projects/ai-document-assistant-preview.png",
       description:
@@ -44,6 +45,7 @@ export const projects: Project[] = [
   },
   {
     slug: "workflow-automation",
+    href: "/projects/workflow-automation",
     preview: {
       src: "/images/projects/workflow-automation-preview.png",
       description:
@@ -59,6 +61,7 @@ export const projects: Project[] = [
   },
   {
     slug: "crm-automation-platform",
+    href: "/projects/crm-automation-platform",
     preview: {
       src: "/images/projects/crm-automation-platform-preview.png",
       description:
@@ -74,6 +77,7 @@ export const projects: Project[] = [
   },
   {
     slug: "marketing-dashboard",
+    href: "/projects/marketing-dashboard",
     preview: {
       src: "/images/projects/marketing-dashboard-preview.png",
       description:
@@ -88,3 +92,7 @@ export const projects: Project[] = [
     metric: "One view across platforms",
   },
 ];
+
+export function findProject(routeSlug: string) {
+  return projects.find((project) => project.href === `/projects/${routeSlug}`);
+}
