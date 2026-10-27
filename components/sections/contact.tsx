@@ -3,7 +3,7 @@ import { Linkedin, Github } from "@/components/ui/brand-icons";
 import { Translated } from "@/components/language-provider";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+
 import {
   Mail,
   Phone,
@@ -42,13 +42,7 @@ export function Contact() {
       <div className="pointer-events-none absolute -bottom-40 left-1/2 h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-[140px]" />
 
       <div className="container relative">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto max-w-2xl text-center"
-        >
+        <div className="reveal mx-auto max-w-2xl text-center">
           <p className="font-mono text-sm text-accent">{"// contact"}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
             <Translated text={"Let's build something"} />
@@ -60,15 +54,9 @@ export function Contact() {
               }
             />
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mx-auto mt-10 flex max-w-md flex-col gap-3"
-        >
+        <div className="reveal mx-auto mt-10 flex max-w-md flex-col gap-3">
           <Button size="lg" variant="accent" asChild>
             <a href={`mailto:${EMAIL}`}>
               <Mail className="h-4 w-4 shrink-0" />
@@ -152,7 +140,7 @@ export function Contact() {
               Madagascar
             </span>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

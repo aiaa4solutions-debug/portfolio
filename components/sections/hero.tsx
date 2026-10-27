@@ -1,8 +1,5 @@
-"use client";
 import { Translated } from "@/components/language-provider";
 
-import * as React from "react";
-import { motion } from "framer-motion";
 import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -20,12 +17,7 @@ const TERMINAL_LINES = [
 
 function TerminalWindow() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
-      className="relative w-full max-w-md rounded-lg border border-border bg-card shadow-xl"
-    >
+    <div className="relative w-full max-w-md rounded-lg border border-border bg-card shadow-xl">
       <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
@@ -35,13 +27,8 @@ function TerminalWindow() {
         </span>
       </div>
       <div className="space-y-2.5 p-5 font-mono text-[13px] leading-relaxed">
-        {TERMINAL_LINES.map((line, i) => (
-          <motion.div
-            key={line.prompt}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: 0.6 + i * 0.35 }}
-          >
+        {TERMINAL_LINES.map((line) => (
+          <div key={line.prompt}>
             <div className="flex gap-2">
               <span className="text-accent">➜</span>
               <span className="text-indigo-400">{line.prompt}</span>
@@ -49,22 +36,17 @@ function TerminalWindow() {
             <p className="pl-5 text-muted-foreground">
               <Translated text={line.output} />
             </p>
-          </motion.div>
+          </div>
         ))}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 + TERMINAL_LINES.length * 0.35 }}
-          className="flex gap-2 pt-1"
-        >
+        <div className="flex gap-2 pt-1">
           <span className="text-accent">➜</span>
           <span
             className="h-4 w-2 animate-blink bg-foreground/70"
             aria-hidden="true"
           />
-        </motion.div>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -79,35 +61,20 @@ export function Hero() {
 
       <div className="container relative grid gap-12 py-20 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-8">
         <div>
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 font-mono text-xs text-muted-foreground"
-          >
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 font-mono text-xs text-muted-foreground">
             <MapPin className="h-3.5 w-3.5 text-accent" />
             <Translated
               text={"Antsirabe, Madagascar — open to remote & on-site"}
             />
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
-          >
+          <h1 className="text-balance text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
             Herimalala Ranaivoarisoa
             <br />
             <span className="gradient-text">Rivomanana</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-5 max-w-xl text-balance text-lg text-muted-foreground"
-          >
+          <p className="mt-5 max-w-xl text-balance text-lg text-muted-foreground">
             <Translated
               text={
                 "Full Stack Developer building fast, reliable products with"
@@ -120,14 +87,9 @@ export function Hero() {
             <Translated
               text={"— and connecting them to AI where it removes real work."}
             />
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-8 flex flex-wrap items-center gap-3"
-          >
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button size="lg" variant="accent" asChild>
               <a href="#projects">
                 <Translated text={"View projects"} />
@@ -140,7 +102,7 @@ export function Hero() {
                 <Translated text={"Get in touch"} />
               </a>
             </Button>
-          </motion.div>
+          </div>
         </div>
 
         <div className="flex justify-center lg:justify-end">

@@ -1,3 +1,4 @@
+import { ProjectStructuredData } from "@/components/seo/project-structured-data";
 import { notFound } from "next/navigation";
 import { findProject, projects } from "@/data/projects";
 import {
@@ -17,6 +18,7 @@ export default async function ProjectPage({ params }: Props) {
   if (!project) notFound();
   return (
     <div className="container pb-20 pt-24">
+      <ProjectStructuredData project={project} />
       <div className="mb-6">
         <CloseProjectPage />
       </div>

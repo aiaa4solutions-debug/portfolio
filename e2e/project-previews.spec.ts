@@ -119,7 +119,7 @@ test("localizes project details and clears the modal when navigating to contact"
   page,
 }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: "Français", exact: true }).click();
+  await page.getByRole("button", { name: "FR (Français)", exact: true }).click();
   await page
     .getByRole("link", {
       name: "Voir les détails du projet: Assistant documentaire IA",

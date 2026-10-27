@@ -10,11 +10,11 @@ test("detects regional French and remembers an explicit English preference", asy
   await expect(
     page.getByRole("link", { name: "Voir les projets", exact: true }),
   ).toBeVisible();
-  await page.getByRole("button", { name: "English", exact: true }).click();
+  await page.getByRole("button", { name: "EN (English)", exact: true }).click();
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await page.reload();
   await expect(
-    page.getByRole("button", { name: "English", exact: true }),
+    page.getByRole("button", { name: "EN (English)", exact: true }),
   ).toHaveAttribute("aria-pressed", "true");
   await expect(
     page.getByRole("link", { name: "View projects", exact: true }),
@@ -29,7 +29,7 @@ test("falls back to English and switches the demo to French", async ({
   const page = await context.newPage();
   await page.goto("/projects/btc-realtime");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  await page.getByRole("button", { name: "Français", exact: true }).click();
+  await page.getByRole("button", { name: "FR (Français)", exact: true }).click();
   await expect(page.getByRole("heading", { level: 1 })).toHaveText(
     "Flux BTC multi-plateformes en temps réel",
   );

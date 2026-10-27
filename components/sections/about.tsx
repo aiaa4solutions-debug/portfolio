@@ -1,7 +1,5 @@
-"use client";
 import { Translated } from "@/components/language-provider";
 
-import { motion } from "framer-motion";
 import { Sparkles, Workflow, Search } from "lucide-react";
 
 const TRAITS = [
@@ -30,12 +28,7 @@ export function About() {
     <section id="about" className="border-t border-border py-24">
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="reveal">
             <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
               <Translated text={"Profile"} />
             </h2>
@@ -53,17 +46,14 @@ export function About() {
                 }
               />
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            {TRAITS.map((trait, i) => (
-              <motion.div
+            {TRAITS.map((trait) => (
+              <div
                 key={trait.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="rounded-lg border border-border bg-card p-6 sm:first:col-span-2"
+
+                className="reveal rounded-lg border border-border bg-card p-6 sm:first:col-span-2"
               >
                 <trait.icon className="h-5 w-5 text-indigo-400" />
                 <h3 className="mt-4 font-medium">
@@ -72,7 +62,7 @@ export function About() {
                 <p className="mt-2 text-sm text-muted-foreground">
                   <Translated text={trait.description} />
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

@@ -5,7 +5,7 @@
 Personal portfolio of a full stack developer working with JavaScript, TypeScript and
 Python: modern web applications, workflow automation and AI integration.
 
-Built with Next.js 16 (App Router), TypeScript, Tailwind CSS, shadcn/ui, Framer Motion
+Built with Next.js 16 (App Router), TypeScript, Tailwind CSS, shadcn/ui, CSS scroll animations
 and next-themes.
 
 ## Featured project: real-time BTC feed
@@ -52,7 +52,7 @@ The code lives in `lib/market` (parsers, analytics, hub, simulator),
 - **TypeScript**: strict mode
 - **Tailwind CSS 4**: custom Slate / Indigo / Cyan design tokens
 - **shadcn/ui**: Button, Card, Badge, Separator primitives
-- **Framer Motion**: scroll and load animations
+- **CSS**: progressive scroll animations with reduced-motion support
 - **Recharts 3**: live charts for the BTC demo
 - **lucide-react**: icons
 - **next-themes**: dark/light mode with system preference
@@ -200,3 +200,8 @@ dialog supports Escape, a close button and browser back/forward. The default,
 root and catch-all slot pages return null so navigation does not leave a stale
 modal open. The full-page link deliberately performs a document navigation.
 The Bitcoin route shares its dashboard content with the intercepted view.
+
+## SEO and performance
+
+See [SEO and performance](docs/seo-performance.md) for measured results, metadata,
+structured data, audit commands and Search Console setup.
