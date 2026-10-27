@@ -4,7 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 import french from "@/lib/i18n/fr.json";
@@ -17,32 +17,52 @@ const LanguageContext = createContext({
 });
 const translations: Record<string, string> = french;
 
+const languageEvent = "portfolio-language-change";
+let memoryPreference: Language | undefined;
+
+function browserLanguage(): Language {
+  if (memoryPreference) return memoryPreference;
+  try {
+    const saved = localStorage.getItem("portfolio-language");
+    if (saved === "fr" || saved === "en") return saved;
+  } catch {
+    /* Storage can be disabled. */
+  }
+  return (navigator.languages?.[0] ?? navigator.language ?? "en")
+    .toLowerCase()
+    .startsWith("fr")
+    ? "fr"
+    : "en";
+}
+function subscribeLanguage(notify: () => void) {
+  window.addEventListener(languageEvent, notify);
+  window.addEventListener("storage", notify);
+  window.addEventListener("languagechange", notify);
+  return () => {
+    window.removeEventListener(languageEvent, notify);
+    window.removeEventListener("storage", notify);
+    window.removeEventListener("languagechange", notify);
+  };
+}
+const serverLanguage = (): Language => "en";
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, updateLanguage] = useState<Language>("en");
-  useEffect(() => {
-    let saved: string | null = null;
-    try {
-      saved = localStorage.getItem("portfolio-language");
-    } catch {
-      /* Storage can be disabled. */
-    }
-    const detected = (navigator.languages?.[0] ?? navigator.language ?? "en")
-      .toLowerCase()
-      .startsWith("fr")
-      ? "fr"
-      : "en";
-    updateLanguage(saved === "fr" || saved === "en" ? saved : detected);
-  }, []);
+  const language = useSyncExternalStore(
+    subscribeLanguage,
+    browserLanguage,
+    serverLanguage,
+  );
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
   function setLanguage(value: Language) {
-    updateLanguage(value);
     try {
       localStorage.setItem("portfolio-language", value);
+      memoryPreference = undefined;
     } catch {
-      /* Keep the in-memory preference. */
+      memoryPreference = value;
     }
+    window.dispatchEvent(new Event(languageEvent));
   }
   const t = (text: string) =>
     language === "fr" ? (translations[text] ?? text) : text;

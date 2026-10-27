@@ -1,7 +1,8 @@
+import { Github } from "@/components/ui/brand-icons";
 import { Translated } from "@/components/language-provider";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, Github } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 import { CaseStudy } from "@/components/market/CaseStudy";
 import RealTimeDashboard from "@/components/market/RealTimeDashboard";

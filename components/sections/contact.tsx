@@ -1,4 +1,5 @@
 "use client";
+import { Linkedin, Github } from "@/components/ui/brand-icons";
 import { Translated } from "@/components/language-provider";
 
 import * as React from "react";
@@ -6,11 +7,9 @@ import { motion } from "framer-motion";
 import {
   Mail,
   Phone,
-  Linkedin,
   MapPin,
   Check,
   Copy,
-  Github,
   MessageCircle,
   CalendarDays,
 } from "lucide-react";

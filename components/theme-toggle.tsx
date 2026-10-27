@@ -7,12 +7,18 @@ import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
 
+const subscribeHydration = () => () => {};
+const clientMounted = () => true;
+const serverMounted = () => false;
+
 export function ThemeToggle() {
   const { t } = useLanguage();
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => setMounted(true), []);
+  const mounted = React.useSyncExternalStore(
+    subscribeHydration,
+    clientMounted,
+    serverMounted,
+  );
 
   if (!mounted) {
     return <div className="h-10 w-10" aria-hidden="true" />;

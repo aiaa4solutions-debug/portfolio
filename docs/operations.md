@@ -64,9 +64,17 @@ runtime/plan: the shared hub is per process, not globally shared across all inst
 
 ## Dependency remediation
 
-Next.js and its ESLint configuration are kept on patched 15.5.28. Next pins an
-older PostCSS internally, so `overrides.next.postcss` uses the same patched
-PostCSS 8.5.x as the build. Remove this override once Next's dependency is safe.
-Sharp is updated within the version range supported by this Next release.
-These changes must pass production build, image generation and browser tests;
-never use `npm audit fix --force` to silently introduce a framework major upgrade.
+Next.js and its ESLint configuration are aligned on 16.4.3. ESLint uses flat
+configuration (`eslint.config.mjs`); the removed `next lint` command is replaced
+by `eslint .`. Type checking runs `next typegen` before TypeScript.
+Tailwind 4 uses `@tailwindcss/postcss` and explicitly loads the existing theme
+configuration with `@config`. Container dimensions and class-based dark mode
+are preserved. `tailwind-merge` is upgraded to its Tailwind 4 compatible major.
+Next 16 no longer needs the old nested PostCSS override, so it has been removed.
+Brand icons removed from Lucide 1.x are retained locally with their original
+ISC license, preserving existing GitHub/LinkedIn links and appearance.
+
+The pinned GitHub actions use Node 24 and require a current runner (at least
+v2.327.1; checkout's container authentication needs v2.329.0). The workflow uses
+GitHub-hosted Ubuntu 24.04, not a legacy self-hosted runner. Remote execution
+still needs to be verified on GitHub after publishing.

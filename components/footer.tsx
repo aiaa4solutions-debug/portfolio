@@ -1,8 +1,9 @@
+import { Github, Linkedin } from "@/components/ui/brand-icons";
 import { contact } from "@/lib/contact";
 
 import { Translated } from "@/components/language-provider";
 import Link from "next/link";
-import { Github, Linkedin, Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 
 const YEAR = new Date().getFullYear();
 

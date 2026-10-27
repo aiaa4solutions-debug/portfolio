@@ -5,7 +5,7 @@
 Personal portfolio of a full stack developer working with JavaScript, TypeScript and
 Python: modern web applications, workflow automation and AI integration.
 
-Built with Next.js 15 (App Router), TypeScript, Tailwind CSS, shadcn/ui, Framer Motion
+Built with Next.js 16 (App Router), TypeScript, Tailwind CSS, shadcn/ui, Framer Motion
 and next-themes.
 
 ## Featured project: real-time BTC feed
@@ -48,9 +48,9 @@ The code lives in `lib/market` (parsers, analytics, hub, simulator),
 
 ## Stack
 
-- **Next.js 15**: App Router, `next/font`, metadata API, route handlers
+- **Next.js 16**: App Router, `next/font`, metadata API, route handlers
 - **TypeScript**: strict mode
-- **Tailwind CSS 3**: custom Slate / Indigo / Cyan design tokens
+- **Tailwind CSS 4**: custom Slate / Indigo / Cyan design tokens
 - **shadcn/ui**: Button, Card, Badge, Separator primitives
 - **Framer Motion**: scroll and load animations
 - **Recharts 3**: live charts for the BTC demo
