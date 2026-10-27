@@ -5,6 +5,7 @@ export interface Project {
   detail: string;
   stack: string[];
   metric: string;
+  preview?: { src: string; description: string };
   /** Internal page of the project, when it has a live demo. */
   href?: string;
   /** Rendered full width, above the other cards. */
@@ -26,6 +27,11 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-document-assistant",
+    preview: {
+      src: "/images/projects/ai-document-assistant.png",
+      description:
+        "Demo interface showing an invoice, OCR regions and structured extracted fields.",
+    },
     title: "AI Document Assistant",
     description:
       "Extracts structured information from documents automatically using OCR and the OpenAI API.",
@@ -36,6 +42,11 @@ export const projects: Project[] = [
   },
   {
     slug: "workflow-automation",
+    preview: {
+      src: "/images/projects/workflow-automation.png",
+      description:
+        "Demo workflow showing a webhook, API validation, PostgreSQL and automated notifications.",
+    },
     title: "Workflow Automation",
     description:
       "Automated workflows that cut manual tasks and streamline business processes end to end.",
@@ -46,6 +57,11 @@ export const projects: Project[] = [
   },
   {
     slug: "crm-automation-platform",
+    preview: {
+      src: "/images/projects/crm-automation-platform.png",
+      description:
+        "Demo sales pipeline with lead cards, follow-up tasks and customer activity.",
+    },
     title: "CRM Automation Platform",
     description:
       "A sales management platform that connects several APIs and automates the surrounding workflows.",
@@ -56,6 +72,11 @@ export const projects: Project[] = [
   },
   {
     slug: "marketing-dashboard",
+    preview: {
+      src: "/images/projects/marketing-dashboard.png",
+      description:
+        "Demo marketing dashboard with campaign trends, channel metrics and performance comparison.",
+    },
     title: "Marketing Dashboard",
     description:
       "A dashboard for automated tracking of marketing campaigns across platforms.",

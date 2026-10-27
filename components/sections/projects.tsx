@@ -2,6 +2,7 @@
 import { Translated } from "@/components/language-provider";
 
 import Link from "next/link";
+import { ProjectPreview } from "@/components/project-preview";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -46,6 +47,13 @@ export function Projects() {
                 project.featured && "md:col-span-2",
               )}
             >
+              {project.preview && (
+                <ProjectPreview
+                  src={project.preview.src}
+                  title={project.title}
+                  description={project.preview.description}
+                />
+              )}
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-xl font-semibold">
                   {project.href ? (
@@ -56,13 +64,15 @@ export function Projects() {
                       <Translated text={project.title} />
                     </Link>
                   ) : (
-                    project.title
+                    <Translated text={project.title} />
                   )}
                 </h3>
-                <ArrowUpRight
-                  className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
-                  aria-hidden="true"
-                />
+                {project.href && (
+                  <ArrowUpRight
+                    className="mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                    aria-hidden="true"
+                  />
+                )}
               </div>
 
               {project.href && (
