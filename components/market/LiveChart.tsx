@@ -1,4 +1,5 @@
-'use client';
+"use client";
+import { Translated, useLanguage } from "@/components/language-provider";
 
 import {
   useId,
@@ -6,7 +7,7 @@ import {
   useState,
   type KeyboardEvent,
   type MouseEvent,
-} from 'react';
+} from "react";
 import {
   CartesianGrid,
   Line,
@@ -17,8 +18,8 @@ import {
   Tooltip,
   XAxis,
   YAxis,
-} from 'recharts';
-import { formatTime } from './format';
+} from "recharts";
+import { formatTime } from "./format";
 
 export interface ChartSeries {
   key: string;
@@ -60,6 +61,7 @@ export function LiveChart<T extends { t: number }>({
   footnote,
 }: LiveChartProps<T>) {
   const hintId = useId();
+  const { t } = useLanguage();
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [keyboardMode, setKeyboardMode] = useState(false);
 
@@ -69,7 +71,7 @@ export function LiveChart<T extends { t: number }>({
 
   const valueAt = (point: T, key: string): number | undefined => {
     const value = (point as unknown as Record<string, unknown>)[key];
-    return typeof value === 'number' ? value : undefined;
+    return typeof value === "number" ? value : undefined;
   };
 
   // Places the tooltip near the cursor, flipping it when it would overflow. The style
@@ -84,8 +86,10 @@ export function LiveChart<T extends { t: number }>({
 
     let left = x + offset;
     let top = y + offset;
-    if (left + tip.offsetWidth > box.clientWidth) left = x - tip.offsetWidth - offset;
-    if (top + tip.offsetHeight > box.clientHeight) top = y - tip.offsetHeight - offset;
+    if (left + tip.offsetWidth > box.clientWidth)
+      left = x - tip.offsetWidth - offset;
+    if (top + tip.offsetHeight > box.clientHeight)
+      top = y - tip.offsetHeight - offset;
 
     tip.style.transform = `translate(${Math.max(0, left)}px, ${Math.max(0, top)}px)`;
   };
@@ -95,7 +99,10 @@ export function LiveChart<T extends { t: number }>({
     if (!box) return;
 
     const rect = box.getBoundingClientRect();
-    mouseRef.current = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+    mouseRef.current = {
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top,
+    };
     if (keyboardMode) setKeyboardMode(false);
     positionTooltip();
   };
@@ -114,11 +121,11 @@ export function LiveChart<T extends { t: number }>({
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (data.length === 0) return;
 
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
       setHoverIdx(null);
       return;
     }
-    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
 
     event.preventDefault();
     setKeyboardMode(true);
@@ -128,15 +135,20 @@ export function LiveChart<T extends { t: number }>({
 
     const lastIndex = data.length - 1;
     setHoverIdx((previous) => {
-      if (event.key === 'Home') return 0;
-      if (event.key === 'End') return lastIndex;
+      if (event.key === "Home") return 0;
+      if (event.key === "End") return lastIndex;
       const current = previous ?? lastIndex;
-      return Math.min(lastIndex, Math.max(0, current + (event.key === 'ArrowRight' ? 1 : -1)));
+      return Math.min(
+        lastIndex,
+        Math.max(0, current + (event.key === "ArrowRight" ? 1 : -1)),
+      );
     });
   };
 
   const hoverPoint =
-    hoverIdx !== null && hoverIdx < data.length ? (data[hoverIdx] ?? null) : null;
+    hoverIdx !== null && hoverIdx < data.length
+      ? (data[hoverIdx] ?? null)
+      : null;
 
   const rows = hoverPoint
     ? series
@@ -150,7 +162,11 @@ export function LiveChart<T extends { t: number }>({
 
   return (
     <div>
-      <div role="group" aria-label="Visible curves" className="mb-3 flex flex-wrap gap-2">
+      <div
+        role="group"
+        aria-label={t("Visible curves")}
+        className="mb-3 flex flex-wrap gap-2"
+      >
         {series.map((s) => (
           <button
             key={s.key}
@@ -159,8 +175,8 @@ export function LiveChart<T extends { t: number }>({
             onClick={() => onToggleSeries(s.key)}
             className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 text-xs font-medium ${
               hidden[s.key]
-                ? 'border-border text-muted-foreground opacity-60'
-                : 'border-border text-foreground'
+                ? "border-border text-muted-foreground opacity-60"
+                : "border-border text-foreground"
             }`}
           >
             <svg width="22" height="6" aria-hidden="true">
@@ -174,7 +190,7 @@ export function LiveChart<T extends { t: number }>({
                 strokeDasharray={s.dash}
               />
             </svg>
-            {s.label}
+            <Translated text={s.label} />
           </button>
         ))}
       </div>
@@ -182,7 +198,7 @@ export function LiveChart<T extends { t: number }>({
       <div
         ref={boxRef}
         role="group"
-        aria-label={ariaLabel}
+        aria-label={t(ariaLabel)}
         aria-describedby={hintId}
         tabIndex={0}
         onKeyDown={handleKeyDown}
@@ -190,8 +206,13 @@ export function LiveChart<T extends { t: number }>({
         className="relative h-80 overflow-hidden rounded-lg bg-slate-950 p-3 sm:h-96"
       >
         {data.length < 2 ? (
-          <div className="flex h-full flex-col justify-end gap-2" aria-hidden="true">
-            <p className="font-mono text-xs text-slate-500">Collecting the first points...</p>
+          <div
+            className="flex h-full flex-col justify-end gap-2"
+            aria-hidden="true"
+          >
+            <p className="font-mono text-xs text-slate-500">
+              <Translated text={"Collecting the first points..."} />
+            </p>
             {[40, 65, 50, 80].map((width) => (
               <div
                 key={width}
@@ -212,7 +233,7 @@ export function LiveChart<T extends { t: number }>({
               <XAxis
                 dataKey="t"
                 type="number"
-                domain={['dataMin', 'dataMax']}
+                domain={["dataMin", "dataMax"]}
                 tickFormatter={(value: number) => formatTime(value)}
                 stroke="#64748b"
                 tick={{ fontSize: 11 }}
@@ -230,14 +251,16 @@ export function LiveChart<T extends { t: number }>({
                   the display is handled below. */}
               <Tooltip content={() => null} cursor={false} />
 
-              {referenceY !== undefined && <ReferenceLine y={referenceY} stroke="#475569" />}
+              {referenceY !== undefined && (
+                <ReferenceLine y={referenceY} stroke="#475569" />
+              )}
 
               {series.map((s) => (
                 <Line
                   key={s.key}
                   type="linear"
                   dataKey={s.key}
-                  name={s.label}
+                  name={t(s.label)}
                   stroke={s.color}
                   strokeWidth={2}
                   strokeDasharray={s.dash}
@@ -250,7 +273,11 @@ export function LiveChart<T extends { t: number }>({
               ))}
 
               {hoverPoint && (
-                <ReferenceLine x={hoverPoint.t} stroke="#94a3b8" strokeDasharray="3 3" />
+                <ReferenceLine
+                  x={hoverPoint.t}
+                  stroke="#94a3b8"
+                  strokeDasharray="3 3"
+                />
               )}
               {hoverPoint &&
                 rows.map((row) => (
@@ -275,12 +302,17 @@ export function LiveChart<T extends { t: number }>({
               // Reposition on mount and after every render (the size can change).
               if (element) positionTooltip();
             }}
-            aria-live={keyboardMode ? 'polite' : 'off'}
+            aria-live={keyboardMode ? "polite" : "off"}
             className="pointer-events-none absolute left-0 top-0 z-10 rounded-lg border border-slate-700 bg-slate-900/95 px-3 py-2 font-mono text-xs shadow-lg"
           >
-            <div className="mb-1 text-slate-400">{formatTime(hoverPoint.t)}</div>
+            <div className="mb-1 text-slate-400">
+              {formatTime(hoverPoint.t)}
+            </div>
             {rows.map((row) => (
-              <div key={row.key} className="flex items-center justify-between gap-4">
+              <div
+                key={row.key}
+                className="flex items-center justify-between gap-4"
+              >
                 <span className="flex items-center gap-1.5 text-slate-300">
                   <svg width="14" height="6" aria-hidden="true">
                     <line
@@ -293,9 +325,11 @@ export function LiveChart<T extends { t: number }>({
                       strokeDasharray={row.dash}
                     />
                   </svg>
-                  {row.label}
+                  <Translated text={row.label} />
                 </span>
-                <span className="font-bold text-slate-100">{formatValue(row.value)}</span>
+                <span className="font-bold text-slate-100">
+                  {formatValue(row.value)}
+                </span>
               </div>
             ))}
           </div>
@@ -303,8 +337,16 @@ export function LiveChart<T extends { t: number }>({
       </div>
 
       <p id={hintId} className="mt-2 text-xs text-muted-foreground">
-        {footnote ? `${footnote} ` : ''}
-        Keyboard: left and right arrows to browse the values, Escape to close.
+        {footnote && (
+          <>
+            <Translated text={footnote} />{" "}
+          </>
+        )}
+        <Translated
+          text={
+            "Keyboard: left and right arrows to browse the values, Escape to close."
+          }
+        />
       </p>
     </div>
   );

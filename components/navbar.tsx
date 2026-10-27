@@ -1,4 +1,9 @@
 "use client";
+import {
+  Translated,
+  LanguageSwitch,
+  useLanguage,
+} from "@/components/language-provider";
 
 import * as React from "react";
 import Link from "next/link";
@@ -9,15 +14,16 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#technologies", label: "Stack" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#technologies", label: "Stack" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Navbar() {
+  const { t } = useLanguage();
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
 
@@ -34,12 +40,12 @@ export function Navbar() {
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         scrolled
           ? "border-b border-border bg-background/80 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent"
+          : "border-b border-transparent bg-transparent",
       )}
     >
       <nav className="container flex h-16 items-center justify-between">
         <Link
-          href="#top"
+          href="/#top"
           className="flex items-center gap-2 font-mono text-sm font-semibold tracking-tight"
         >
           <Terminal className="h-4 w-4 text-accent" aria-hidden="true" />
@@ -48,26 +54,34 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => (
             <Button key={link.href} variant="ghost" size="sm" asChild>
-              <Link href={link.href}>{link.label}</Link>
+              <Link href={link.href}>{t(link.label)}</Link>
             </Button>
           ))}
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="hidden md:block">
+          <LanguageSwitch />
+          <div className="hidden lg:block">
             <ThemeToggle />
           </div>
-          <Button size="sm" variant="accent" className="hidden md:inline-flex" asChild>
-            <Link href="#contact">Let&apos;s talk</Link>
+          <Button
+            size="sm"
+            variant="accent"
+            className="hidden lg:inline-flex"
+            asChild
+          >
+            <Link href="/#contact">
+              <Translated text={"Let's talk"} />
+            </Link>
           </Button>
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
-            aria-label={open ? "Close menu" : "Open menu"}
+            className="lg:hidden"
+            aria-label={t(open ? "Close menu" : "Open menu")}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
@@ -77,7 +91,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-border bg-background/95 backdrop-blur-md md:hidden">
+        <div className="border-t border-border bg-background/95 backdrop-blur-md lg:hidden">
           <div className="container flex flex-col gap-1 py-4">
             {NAV_LINKS.map((link) => (
               <Button
@@ -87,11 +101,13 @@ export function Navbar() {
                 asChild
                 onClick={() => setOpen(false)}
               >
-                <Link href={link.href}>{link.label}</Link>
+                <Link href={link.href}>{t(link.label)}</Link>
               </Button>
             ))}
             <div className="mt-2 flex items-center justify-between px-3">
-              <span className="text-sm text-muted-foreground">Theme</span>
+              <span className="text-sm text-muted-foreground">
+                <Translated text={"Theme"} />
+              </span>
               <ThemeToggle />
             </div>
           </div>

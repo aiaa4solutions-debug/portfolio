@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://herimalala.dev/sitemap.xml",
+    sitemap: "https://herimalala.netlify.app/sitemap.xml",
   };
 }

@@ -155,3 +155,21 @@ Notes on the BTC demo in production:
   no exchange answers, `auto` mode switches to clearly labeled simulated data.
 - The data is public and shown for technical demonstration only. It is not financial
   advice, and the spread ignores fees and order book depth.
+
+## Languages and contact details
+
+The portfolio and BTC demo support English and French. On the first visit, the
+browser’s preferred language selects French (`fr`, including regional variants)
+or English as the fallback. The EN/FR control overrides detection and remembers
+the preference in local storage. The document language updates for accessibility.
+French translations live in `lib/i18n/fr.json`.
+
+Public contact details are centralized in `lib/contact.ts`. WhatsApp uses the
+international number without a leading `+` in the `wa.me` URL. Set
+`NEXT_PUBLIC_CALENDLY_URL` to the owner's actual public Calendly booking URL and
+rebuild/redeploy to enable direct booking. An email address alone is not a booking
+URL; until configured, the meeting button opens a clearly labelled email request.
+No Google Calendar credentials are needed or exposed by the portfolio.
+
+For E2E tests with an existing Chromium installation:
+`PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium MARKET_MODE=replay npm run test:e2e`.

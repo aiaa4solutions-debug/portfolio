@@ -1,4 +1,5 @@
 "use client";
+import { Translated } from "@/components/language-provider";
 
 import { motion } from "framer-motion";
 
@@ -18,11 +19,14 @@ export function Skills() {
         >
           <p className="font-mono text-sm text-accent">{"// skills"}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Technical skills
+            <Translated text={"Technical skills"} />
           </h2>
           <p className="mt-4 text-muted-foreground">
-            The languages, frameworks and tools I reach for day to day —
-            grouped the way I&apos;d group them in a terminal.
+            <Translated
+              text={
+                "The languages, frameworks and tools I reach for day to day — grouped the way I'd group them in a terminal."
+              }
+            />
           </p>
         </motion.div>
 
@@ -40,12 +44,12 @@ export function Skills() {
                 <span className="text-accent">$</span> {group.command}
               </p>
               <h3 className="mt-2 text-sm font-semibold text-foreground">
-                {group.label}
+                <Translated text={group.label} />
               </h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <Badge key={item} variant="indigo">
-                    {item}
+                    <Translated text={item} />
                   </Badge>
                 ))}
               </div>

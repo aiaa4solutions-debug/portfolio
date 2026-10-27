@@ -1,3 +1,5 @@
+import { contact } from "@/lib/contact";
+import { LanguageProvider } from "@/components/language-provider";
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
@@ -18,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://herimalala.dev";
+const SITE_URL = "https://herimalala.netlify.app";
 const SITE_NAME = "Herimalala Ranaivoarisoa Rivomanana — Full Stack Developer";
 const SITE_DESCRIPTION =
   "Full Stack Developer specialized in JavaScript, TypeScript and Python, building modern web applications and AI-integrated automation with Next.js, Node.js and the OpenAI API.";
@@ -82,14 +84,14 @@ const jsonLd = {
   name: "Herimalala Ranaivoarisoa Rivomanana",
   jobTitle: "Full Stack Developer",
   url: SITE_URL,
-  email: "mailto:ranaivoarisoa@gmx.fr",
+  email: contact.email,
   telephone: "+261349403247",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Antsirabe",
     addressCountry: "MG",
   },
-  sameAs: ["https://linkedin.com/in/ranaivoarisoa"],
+  sameAs: [contact.linkedin, contact.github],
   knowsAbout: [
     "JavaScript",
     "TypeScript",
@@ -115,16 +117,20 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <LanguageProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

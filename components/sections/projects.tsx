@@ -1,4 +1,5 @@
 "use client";
+import { Translated } from "@/components/language-provider";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -21,11 +22,14 @@ export function Projects() {
         >
           <p className="font-mono text-sm text-accent">{"// projects"}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Featured projects
+            <Translated text={"Featured projects"} />
           </h2>
           <p className="mt-4 text-muted-foreground">
-            A selection of products built around automation, integration and
-            applied AI.
+            <Translated
+              text={
+                "A selection of products built around automation, integration and applied AI."
+              }
+            />
           </p>
         </motion.div>
 
@@ -39,7 +43,7 @@ export function Projects() {
               transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
               className={cn(
                 "group relative flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-indigo-500/40",
-                project.featured && "md:col-span-2"
+                project.featured && "md:col-span-2",
               )}
             >
               <div className="flex items-start justify-between gap-4">
@@ -49,7 +53,7 @@ export function Projects() {
                       href={project.href}
                       className="after:absolute after:inset-0"
                     >
-                      {project.title}
+                      <Translated text={project.title} />
                     </Link>
                   ) : (
                     project.title
@@ -63,20 +67,20 @@ export function Projects() {
 
               {project.href && (
                 <Badge variant="accent" className="mt-3 w-fit">
-                  Live demo
+                  <Translated text={"Live demo"} />
                 </Badge>
               )}
 
               <p className="mt-3 text-sm text-muted-foreground">
-                {project.description}
+                <Translated text={project.description} />
               </p>
               <p className="mt-3 text-sm text-muted-foreground">
-                {project.detail}
+                <Translated text={project.detail} />
               </p>
 
               <div className="mt-auto pt-6">
                 <p className="font-mono text-xs text-accent">
-                  {project.metric}
+                  <Translated text={project.metric} />
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (

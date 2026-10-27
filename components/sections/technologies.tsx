@@ -1,4 +1,5 @@
 "use client";
+import { Translated } from "@/components/language-provider";
 
 import { motion } from "framer-motion";
 
@@ -41,7 +42,7 @@ export function Technologies() {
         >
           <p className="font-mono text-sm text-accent">{"// stack"}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Technologies I work with
+            <Translated text={"Technologies I work with"} />
           </h2>
         </motion.div>
 

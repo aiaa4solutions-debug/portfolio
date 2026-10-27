@@ -1,4 +1,5 @@
 "use client";
+import { Translated } from "@/components/language-provider";
 
 import * as React from "react";
 import Link from "next/link";
@@ -46,7 +47,9 @@ function TerminalWindow() {
               <span className="text-accent">➜</span>
               <span className="text-indigo-400">{line.prompt}</span>
             </div>
-            <p className="pl-5 text-muted-foreground">{line.output}</p>
+            <p className="pl-5 text-muted-foreground">
+              <Translated text={line.output} />
+            </p>
           </motion.div>
         ))}
         <motion.div
@@ -56,7 +59,10 @@ function TerminalWindow() {
           className="flex gap-2 pt-1"
         >
           <span className="text-accent">➜</span>
-          <span className="h-4 w-2 animate-blink bg-foreground/70" aria-hidden="true" />
+          <span
+            className="h-4 w-2 animate-blink bg-foreground/70"
+            aria-hidden="true"
+          />
         </motion.div>
       </div>
     </motion.div>
@@ -81,7 +87,9 @@ export function Hero() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-3 py-1 font-mono text-xs text-muted-foreground"
           >
             <MapPin className="h-3.5 w-3.5 text-accent" />
-            Antsirabe, Madagascar — open to remote &amp; on-site
+            <Translated
+              text={"Antsirabe, Madagascar — open to remote & on-site"}
+            />
           </motion.div>
 
           <motion.h1
@@ -101,11 +109,18 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-5 max-w-xl text-balance text-lg text-muted-foreground"
           >
-            Full Stack Developer building fast, reliable products with{" "}
+            <Translated
+              text={
+                "Full Stack Developer building fast, reliable products with"
+              }
+            />{" "}
             <span className="text-foreground">JavaScript</span>,{" "}
-            <span className="text-foreground">TypeScript</span> and{" "}
-            <span className="text-foreground">Python</span> — and connecting
-            them to AI where it removes real work.
+            <span className="text-foreground">TypeScript</span>{" "}
+            <Translated text={"and"} />{" "}
+            <span className="text-foreground">Python</span>{" "}
+            <Translated
+              text={"— and connecting them to AI where it removes real work."}
+            />
           </motion.p>
 
           <motion.div
@@ -116,14 +131,14 @@ export function Hero() {
           >
             <Button size="lg" variant="accent" asChild>
               <Link href="#projects">
-                View projects
+                <Translated text={"View projects"} />
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link href="#contact">
                 <FileDown className="h-4 w-4" />
-                Get in touch
+                <Translated text={"Get in touch"} />
               </Link>
             </Button>
           </motion.div>

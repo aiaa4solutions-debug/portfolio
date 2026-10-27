@@ -1,4 +1,5 @@
 "use client";
+import { Translated } from "@/components/language-provider";
 
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
@@ -19,11 +20,14 @@ export function Experience() {
         >
           <p className="font-mono text-sm text-accent">{"// experience"}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Where I&apos;ve worked
+            <Translated text={"Where I've worked"} />
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Roughly eight years across freelance, agency and consulting
-            work, from frontend interfaces to full backend systems.
+            <Translated
+              text={
+                "Roughly eight years across freelance, agency and consulting work, from frontend interfaces to full backend systems."
+              }
+            />
           </p>
         </motion.div>
 
@@ -45,22 +49,24 @@ export function Experience() {
               />
 
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="text-lg font-semibold">{job.role}</h3>
+                <h3 className="text-lg font-semibold">
+                  <Translated text={job.role} />
+                </h3>
                 <span className="font-mono text-xs text-muted-foreground">
-                  {job.period}
+                  <Translated text={job.period} />
                 </span>
               </div>
 
               <div className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
                 <span className="font-medium text-foreground">
-                  {job.company}
+                  <Translated text={job.company} />
                 </span>
                 <span aria-hidden="true">·</span>
                 <MapPin className="h-3.5 w-3.5" />
-                {job.location}
+                <Translated text={job.location} />
                 {job.current && (
                   <Badge variant="accent" className="ml-2">
-                    Current
+                    <Translated text={"Current"} />
                   </Badge>
                 )}
               </div>
@@ -72,7 +78,7 @@ export function Experience() {
                     className="flex gap-2 text-sm text-muted-foreground"
                   >
                     <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-indigo-400" />
-                    {point}
+                    <Translated text={point} />
                   </li>
                 ))}
               </ul>
