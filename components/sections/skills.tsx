@@ -1,7 +1,4 @@
-"use client";
 import { Translated } from "@/components/language-provider";
-
-import { motion } from "framer-motion";
 
 import { skillGroups } from "@/data/skills";
 import { Badge } from "@/components/ui/badge";
@@ -10,13 +7,7 @@ export function Skills() {
   return (
     <section id="skills" className="border-t border-border bg-muted/30 py-24">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
-        >
+        <div className="reveal max-w-2xl">
           <p className="font-mono text-sm text-accent">{"// skills"}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
             <Translated text={"Technical skills"} />
@@ -28,17 +19,14 @@ export function Skills() {
               }
             />
           </p>
-        </motion.div>
+        </div>
 
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, i) => (
-            <motion.div
+          {skillGroups.map((group) => (
+            <div
               key={group.label}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: (i % 3) * 0.08 }}
-              className="rounded-lg border border-border bg-card p-5"
+
+              className="reveal rounded-lg border border-border bg-card p-5"
             >
               <p className="font-mono text-xs text-muted-foreground">
                 <span className="text-accent">$</span> {group.command}
@@ -53,7 +41,7 @@ export function Skills() {
                   </Badge>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

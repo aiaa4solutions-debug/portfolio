@@ -92,7 +92,7 @@ export function LanguageSwitch() {
           key={value}
           type="button"
           lang={value}
-          aria-label={value === "fr" ? "Français" : "English"}
+          aria-label={value === "fr" ? "FR (Français)" : "EN (English)"}
           aria-pressed={language === value}
           onClick={() => setLanguage(value)}
           className={`rounded px-2 py-1.5 text-xs font-semibold transition-colors ${language === value ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"}`}

@@ -1,7 +1,5 @@
-"use client";
 import { Translated } from "@/components/language-provider";
 
-import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 
 import { experience } from "@/data/experience";
@@ -11,13 +9,7 @@ export function Experience() {
   return (
     <section id="experience" className="border-t border-border py-24">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
-        >
+        <div className="reveal max-w-2xl">
           <p className="font-mono text-sm text-accent">{"// experience"}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
             <Translated text={"Where I've worked"} />
@@ -29,17 +21,14 @@ export function Experience() {
               }
             />
           </p>
-        </motion.div>
+        </div>
 
         <ol className="relative mt-14 space-y-10 border-l border-border pl-8 sm:pl-10">
-          {experience.map((job, i) => (
-            <motion.li
+          {experience.map((job) => (
+            <li
               key={job.role + job.period}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="relative"
+
+              className="reveal relative"
             >
               <span
                 className={`absolute -left-[calc(2rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full sm:-left-[calc(2.5rem+5px)] ${
@@ -88,7 +77,7 @@ export function Experience() {
                   <Badge key={tech}>{tech}</Badge>
                 ))}
               </div>
-            </motion.li>
+            </li>
           ))}
         </ol>
       </div>

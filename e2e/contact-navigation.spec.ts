@@ -23,7 +23,7 @@ test("contact CTA scrolls to contact, including a repeated click and French labe
       .toBeLessThan(144);
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
   }
-  await page.getByRole("button", { name: "Français", exact: true }).click();
+  await page.getByRole("button", { name: "FR (Français)", exact: true }).click();
   await page.getByRole("link", { name: "Me contacter", exact: true }).click();
   await expect(email).toBeInViewport();
   await expect(page.getByRole("dialog")).not.toBeVisible();

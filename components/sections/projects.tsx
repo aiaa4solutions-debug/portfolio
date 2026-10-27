@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ProjectPreview } from "@/components/project-preview";
-import { motion } from "framer-motion";
+
 import { ArrowUpRight, Play, ArrowRight } from "lucide-react";
 
 import { projects } from "@/data/projects";
@@ -17,13 +17,7 @@ export function Projects() {
   return (
     <section id="projects" className="border-t border-border bg-muted/30 py-24">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
-        >
+        <div className="reveal max-w-2xl">
           <p className="font-mono text-sm text-accent">{"// projects"}</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
             <Translated text={"Featured projects"} />
@@ -35,20 +29,20 @@ export function Projects() {
               }
             />
           </p>
-        </motion.div>
+        </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {projects.map((project, i) => (
-            <motion.article
+          {projects.map((project) => (
+            <article
               key={project.slug}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
-              className={cn(
-                "group relative flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-indigo-500/40",
-                project.featured && "md:col-span-2",
-              )}
+
+              className={
+                "reveal " +
+                cn(
+                  "group relative flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-indigo-500/40",
+                  project.featured && "md:col-span-2",
+                )
+              }
             >
               {project.cover && project.href && (
                 <figure className="mb-6">
@@ -166,7 +160,7 @@ export function Projects() {
                   ))}
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>

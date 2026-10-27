@@ -22,7 +22,24 @@ import {
   formatSigned,
   formatTime,
 } from "./format";
-import { LiveChart, type ChartSeries } from "./LiveChart";
+import dynamic from "next/dynamic";
+import type { ChartSeries } from "./LiveChart";
+const LiveChart = dynamic(
+  () => import("./LiveChart").then((module) => module.LiveChart),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        className="h-[360px] animate-pulse rounded-lg bg-muted"
+        role="status"
+      >
+        <span className="sr-only">
+          <Translated text="Loading chart" />
+        </span>
+      </div>
+    ),
+  },
+);
 import { useMarketStream } from "./useMarketStream";
 
 type View = "table" | "curves" | "spread";

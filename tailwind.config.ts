@@ -12,7 +12,16 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        mono: [
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "Liberation Mono",
+          "Courier New",
+          "monospace",
+        ],
       },
       colors: {
         border: "hsl(var(--border))",

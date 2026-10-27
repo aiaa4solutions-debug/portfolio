@@ -1,7 +1,7 @@
-import { contact } from "@/lib/contact";
+import { site, person, jsonLd } from "@/lib/seo";
 import { LanguageProvider } from "@/components/language-provider";
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
@@ -11,27 +11,17 @@ import "./globals.css";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap",
+  display: "optional",
 });
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-const SITE_URL = "https://herimalala.netlify.app";
-const SITE_NAME = "Herimalala Ranaivoarisoa Rivomanana — Full Stack Developer";
-const SITE_DESCRIPTION =
-  "Full Stack Developer specialized in JavaScript, TypeScript and Python, building modern web applications and AI-integrated automation with Next.js, Node.js and the OpenAI API.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(site.url),
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },
   title: {
-    default: SITE_NAME,
-    template: "%s | Herimalala Ranaivoarisoa",
+    default: site.title,
+    template: "%s | Herimalala",
   },
-  description: SITE_DESCRIPTION,
+  description: site.description,
   keywords: [
     "Full Stack Developer",
     "Next.js Developer",
@@ -48,15 +38,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: SITE_URL,
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
-    siteName: SITE_NAME,
+    url: site.url,
+    title: site.title,
+    description: site.description,
+    siteName: site.name,
+    images: [
+      { url: "/opengraph-image", width: 1200, height: 630, alt: site.title },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
-    description: SITE_DESCRIPTION,
+    title: site.title,
+    description: site.description,
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
@@ -67,7 +61,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: SITE_URL,
+    canonical: site.url,
   },
 };
 
@@ -78,29 +72,17 @@ export const viewport: Viewport = {
   ],
 };
 
-const jsonLd = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Herimalala Ranaivoarisoa Rivomanana",
-  jobTitle: "Full Stack Developer",
-  url: SITE_URL,
-  email: contact.email,
-  telephone: "+261349403247",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Antsirabe",
-    addressCountry: "MG",
-  },
-  sameAs: [contact.linkedin, contact.github],
-  knowsAbout: [
-    "JavaScript",
-    "TypeScript",
-    "Python",
-    "React",
-    "Next.js",
-    "Node.js",
-    "OpenAI API",
-    "Workflow Automation",
+  "@graph": [
+    person,
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      name: site.name,
+      url: site.url,
+      publisher: { "@id": `${site.url}/#person` },
+    },
   ],
 };
 
@@ -116,12 +98,10 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(structuredData) }}
         />
       </head>
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
-      >
+      <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
