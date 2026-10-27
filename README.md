@@ -179,3 +179,11 @@ For E2E tests with an existing Chromium installation:
 See [operations](docs/operations.md) for CI checks, Netlify configuration, required
 repository protections, smoke tests and rollback. Use the Node version in `.nvmrc`
 and npm 11.9.0 for local development and CI.
+
+## Project demo visuals
+
+The AI document assistant, workflow automation, CRM and marketing project cards
+include generated concept mockups with fictional data, not screenshots of deployed
+applications. Original PNG assets are in `public/images/projects/`; Next.js serves
+responsive optimized images. Click a visual to enlarge it; Escape closes the native
+dialog. Captions, alternative text and dialog controls are localized in EN/FR.
