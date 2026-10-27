@@ -2,9 +2,8 @@
 import { Translated } from "@/components/language-provider";
 
 import * as React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, FileDown } from "lucide-react";
+import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -130,16 +129,16 @@ export function Hero() {
             className="mt-8 flex flex-wrap items-center gap-3"
           >
             <Button size="lg" variant="accent" asChild>
-              <Link href="#projects">
+              <a href="#projects">
                 <Translated text={"View projects"} />
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <Link href="#contact">
-                <FileDown className="h-4 w-4" />
+              <a href="#contact">
+                <MessageCircle className="h-4 w-4" />
                 <Translated text={"Get in touch"} />
-              </Link>
+              </a>
             </Button>
           </motion.div>
         </div>

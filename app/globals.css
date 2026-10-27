@@ -98,3 +98,8 @@
   outline-offset: 2px;
   border-radius: 4px;
 }
+
+/* Leave room for the fixed navigation when following section anchors. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
