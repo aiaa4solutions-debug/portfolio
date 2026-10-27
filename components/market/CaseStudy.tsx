@@ -15,6 +15,14 @@ const SECTIONS = [
     body: "Reconnecting upstream sockets without losing the other exchanges (the Bitfinex channel id changes on every connection), keeping the chart tooltip consistent while the window slides, staying useful when exchanges are unreachable, and reading the trade side correctly: Coinbase reports the maker side, not the aggressor.",
   },
   {
+    title: "Connection lifecycle",
+    body: "Within each server instance, visitors share one upstream WebSocket per exchange. The hub starts with the first subscriber and stops 15 seconds after the last subscriber leaves. Failed connections retry with exponential backoff and jitter, capped at 30 seconds.",
+  },
+  {
+    title: "Load and memory",
+    body: "Each SSE connection buffers up to 1,000 messages before dropping new trades for slow clients and counting the drops. Disconnecting releases subscriptions and timers. This demo has not been load-tested to establish a concurrent visitor capacity.",
+  },
+  {
     title: "Result",
     body: "A demo that stays usable offline, covered by unit and end-to-end tests, with visible metrics (latency, reconnects, dropped messages) that show how the system really behaves.",
   },

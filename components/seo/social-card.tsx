@@ -1,3 +1,5 @@
+import { site } from "@/lib/seo";
+
 export function SocialCard({
   title,
   subtitle,
@@ -20,7 +22,7 @@ export function SocialCard({
       }}
     >
       <div style={{ display: "flex", fontSize: 28, color: "#22d3ee" }}>
-        heri.dev / portfolio
+        {site.name} / portfolio
       </div>
       <div
         style={{
@@ -44,7 +46,7 @@ export function SocialCard({
         {subtitle}
       </div>
       <div style={{ display: "flex", fontSize: 24, color: "#818cf8" }}>
-        herimalala.netlify.app
+        {new URL(site.url).hostname}
       </div>
     </div>
   );

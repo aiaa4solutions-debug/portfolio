@@ -209,5 +209,9 @@
   "Implementation": "Mise en œuvre",
   "Outcome": "Résultat",
   "Discuss a similar project": "Discuter d’un projet similaire",
-  "Loading chart": "Chargement du graphique"
+  "Loading chart": "Chargement du graphique",
+  "Connection lifecycle": "Cycle de vie des connexions",
+  "Within each server instance, visitors share one upstream WebSocket per exchange. The hub starts with the first subscriber and stops 15 seconds after the last subscriber leaves. Failed connections retry with exponential backoff and jitter, capped at 30 seconds.": "Dans chaque instance serveur, les visiteurs partagent une connexion WebSocket par plateforme. Le hub démarre au premier abonné et s’arrête 15 secondes après le départ du dernier. Les connexions interrompues sont relancées avec un délai exponentiel et une variation aléatoire, plafonné à 30 secondes.",
+  "Load and memory": "Charge et mémoire",
+  "Each SSE connection buffers up to 1,000 messages before dropping new trades for slow clients and counting the drops. Disconnecting releases subscriptions and timers. This demo has not been load-tested to establish a concurrent visitor capacity.": "Chaque connexion SSE dispose d’un tampon de 1 000 messages avant d’ignorer les nouvelles transactions destinées à un client lent et de comptabiliser ces pertes. La déconnexion libère les abonnements et les temporisateurs. Aucun test de charge n’a encore établi la capacité de cette démo en visiteurs simultanés."
 }
