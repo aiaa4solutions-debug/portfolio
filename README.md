@@ -185,8 +185,18 @@ and npm 11.9.0 for local development and CI.
 The AI document assistant, workflow automation, CRM and marketing project cards
 include generated concept mockups with fictional data, not screenshots of deployed
 applications. Original PNG assets are in `public/images/projects/`; Next.js serves
-responsive optimized images. Click a visual to enlarge it; Escape closes the native
-dialog. Captions, alternative text and dialog controls are localized in EN/FR.
+responsive optimized images. Click a visual to open its project details; Escape closes the route modal. Captions, alternative text and dialog controls are localized in EN/FR.
 
 The Bitcoin project cover is a screenshot of the actual interface in simulation
 mode. Its image and primary call-to-action both open the interactive dashboard.
+
+## Project routes
+
+Project URLs under `/projects/[slug]` render full pages on direct navigation or
+refresh. Client navigation from the portfolio is intercepted by
+`app/@modal/(.)projects/[slug]`, which renders details in the root layout's parallel
+`@modal` slot while preserving the portfolio and its scroll position. The native
+dialog supports Escape, a close button and browser back/forward. The default,
+root and catch-all slot pages return null so navigation does not leave a stale
+modal open. The full-page link deliberately performs a document navigation.
+The Bitcoin route shares its dashboard content with the intercepted view.

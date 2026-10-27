@@ -1,3 +1,4 @@
+import { projects } from "@/data/projects";
 import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://herimalala.netlify.app";
@@ -10,11 +11,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
-    {
-      url: `${SITE_URL}/projects/btc-realtime`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    ...projects.flatMap((project) =>
+      project.href
+        ? [
+            {
+              url: `${SITE_URL}${project.href}`,
+              lastModified: new Date(),
+              changeFrequency: "monthly" as const,
+              priority: 0.7,
+            },
+          ]
+        : [],
+    ),
   ];
 }

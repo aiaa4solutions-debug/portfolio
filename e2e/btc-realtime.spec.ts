@@ -93,4 +93,10 @@ test("the home page links to the demo", async ({ page }) => {
     .getByRole("link", { name: "Explore the interactive demo", exact: true })
     .click();
   await expect(page).toHaveURL(/\/projects\/btc-realtime$/);
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await page
+    .getByRole("button", { name: "Close project details", exact: true })
+    .click();
+  await expect(page.getByRole("dialog")).not.toBeVisible();
+  await expect(page).toHaveURL(/\/$/);
 });

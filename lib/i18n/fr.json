@@ -201,5 +201,12 @@
   "3 exchanges · Curves · Price spreads": "3 plateformes · Courbes · Écarts de prix",
   "Interface preview · Simulation mode": "Aperçu de l’interface · Mode simulation",
   "Open the Bitcoin dashboard": "Ouvrir le tableau de bord Bitcoin",
-  "Bitcoin multi-exchange dashboard with price curves in simulation mode": "Tableau de bord Bitcoin multi-plateformes avec courbes de prix en mode simulation"
+  "Bitcoin multi-exchange dashboard with price curves in simulation mode": "Tableau de bord Bitcoin multi-plateformes avec courbes de prix en mode simulation",
+  "View project details": "Voir les détails du projet",
+  "Project details": "Détails du projet",
+  "Close project details": "Fermer les détails du projet",
+  "Open full page": "Ouvrir la page complète",
+  "Implementation": "Mise en œuvre",
+  "Outcome": "Résultat",
+  "Discuss a similar project": "Discuter d’un projet similaire"
 }

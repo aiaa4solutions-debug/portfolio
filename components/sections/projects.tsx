@@ -54,6 +54,7 @@ export function Projects() {
                 <figure className="mb-6">
                   <Link
                     href={project.href}
+                    scroll={false}
                     aria-label={t("Open the Bitcoin dashboard")}
                     className="group/btc relative block overflow-hidden rounded-lg border border-cyan-400/25 bg-slate-950 shadow-lg shadow-cyan-500/5"
                   >
@@ -82,8 +83,9 @@ export function Projects() {
                   </figcaption>
                 </figure>
               )}
-              {project.preview && (
+              {project.preview && project.href && (
                 <ProjectPreview
+                  href={project.href}
                   src={project.preview.src}
                   title={project.title}
                   description={project.preview.description}
@@ -94,6 +96,7 @@ export function Projects() {
                   {project.href ? (
                     <Link
                       href={project.href}
+                      scroll={false}
                       className="transition-colors hover:text-accent"
                     >
                       <Translated text={project.title} />
@@ -117,7 +120,7 @@ export function Projects() {
                 <Translated text={project.detail} />
               </p>
 
-              {project.href && (
+              {project.featured && project.href && (
                 <div className="mt-6 flex flex-wrap items-center gap-4">
                   <Button
                     variant="accent"
@@ -125,7 +128,7 @@ export function Projects() {
                     className="group/cta h-auto min-h-12 whitespace-normal rounded-lg px-6 py-3 font-semibold shadow-lg shadow-cyan-500/20"
                     asChild
                   >
-                    <Link href={project.href}>
+                    <Link href={project.href} scroll={false}>
                       <Play
                         className="h-4 w-4 shrink-0"
                         fill="currentColor"
@@ -142,6 +145,14 @@ export function Projects() {
                     <Translated text="3 exchanges · Curves · Price spreads" />
                   </span>
                 </div>
+              )}
+              {!project.featured && project.href && (
+                <Button variant="outline" className="mt-6 w-fit" asChild>
+                  <Link href={project.href} scroll={false}>
+                    <Translated text="View project details" />
+                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                  </Link>
+                </Button>
               )}
               <div className="mt-auto pt-6">
                 <p className="font-mono text-xs text-accent">

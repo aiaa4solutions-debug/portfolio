@@ -106,8 +106,10 @@ const jsonLd = {
 
 export default function RootLayout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -130,6 +132,7 @@ export default function RootLayout({
             <Navbar />
             <main>{children}</main>
             <Footer />
+            {modal}
           </LanguageProvider>
         </ThemeProvider>
       </body>
