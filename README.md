@@ -60,7 +60,7 @@ The code lives in `lib/market` (parsers, analytics, hub, simulator),
 
 ## Getting started
 
-Requirements: Node.js 22 (LTS) and npm.
+Requirements: Node.js 24.19.0 (see `.nvmrc`) and npm 11.9.0.
 
 ```bash
 npm install
@@ -173,3 +173,9 @@ No Google Calendar credentials are needed or exposed by the portfolio.
 
 For E2E tests with an existing Chromium installation:
 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium MARKET_MODE=replay npm run test:e2e`.
+
+## Delivery and operations
+
+See [operations](docs/operations.md) for CI checks, Netlify configuration, required
+repository protections, smoke tests and rollback. Use the Node version in `.nvmrc`
+and npm 11.9.0 for local development and CI.

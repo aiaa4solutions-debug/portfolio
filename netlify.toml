@@ -1,0 +1,11 @@
+[build]
+  command = "npm run check && npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "24.19.0"
+  NPM_VERSION = "11.9.0"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# Netlify's Next.js runtime manages SSR, route handlers and image optimization.
+# MARKET_MODE is intentionally not set here: production keeps its live/auto mode.
