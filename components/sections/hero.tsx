@@ -1,3 +1,5 @@
+import Image from "next/image";
+import heroBanner from "@/public/images/developer-automation-banner-dark.png";
 import { Translated } from "@/components/language-provider";
 
 import { ArrowRight, MapPin, MessageCircle } from "lucide-react";
@@ -56,8 +58,20 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[92vh] items-center overflow-hidden pt-16"
     >
-      <div className="bg-grid pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,black,transparent)]" />
-      <div className="pointer-events-none absolute -top-32 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[140px]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <Image
+          src={heroBanner}
+          alt=""
+          fill
+          sizes="100vw"
+          quality={75}
+          loading="eager"
+          fetchPriority="low"
+          className="object-cover object-right opacity-20 dark:opacity-100"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-background/95 via-background/60 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent" />
+      </div>
 
       <div className="container relative grid gap-12 py-20 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-8">
         <div>
