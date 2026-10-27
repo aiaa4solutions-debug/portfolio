@@ -165,10 +165,10 @@ the preference in local storage. The document language updates for accessibility
 French translations live in `lib/i18n/fr.json`.
 
 Public contact details are centralized in `lib/contact.ts`. WhatsApp uses the
-international number without a leading `+` in the `wa.me` URL. Set
-`NEXT_PUBLIC_CALENDLY_URL` to the owner's actual public Calendly booking URL and
-rebuild/redeploy to enable direct booking. An email address alone is not a booking
-URL; until configured, the meeting button opens a clearly labelled email request.
+international number without a leading `+` in the `wa.me` URL. The meeting button
+links to `https://calendly.com/aiaa4solutions`. To override this public booking URL,
+set `NEXT_PUBLIC_CALENDLY_URL` and rebuild/redeploy. Setting it to an empty string
+uses a clearly labelled email meeting request instead.
 No Google Calendar credentials are needed or exposed by the portfolio.
 
 For E2E tests with an existing Chromium installation:

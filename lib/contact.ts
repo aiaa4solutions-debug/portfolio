@@ -4,8 +4,8 @@ export const contact = {
   phone: "+261349403247",
   whatsapp: "https://wa.me/261349403247",
   github: "https://github.com/aiaa4solutions-debug",
-  linkedin: "https://linkedin.com/in/ranaivoarisoa",
-  // Set the public booking URL after the owner confirms it.
-  calendly: process.env.NEXT_PUBLIC_CALENDLY_URL ?? "",
+  linkedin: "https://mg.linkedin.com/in/ranaivoarisoa",
+  calendly:
+    process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/aiaa4solutions",
 };
 export const meetingEmail = `mailto:${contact.email}?subject=${encodeURIComponent("Meeting / Rendez-vous")}`;

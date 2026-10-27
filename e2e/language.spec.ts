@@ -49,6 +49,8 @@ test("falls back to English and switches the demo to French", async ({
 
 test("exposes the correct WhatsApp and email contacts", async ({ page }) => {
   await page.goto("/");
+  await expect(page.locator('#contact a[href="https://calendly.com/aiaa4solutions"]')).toBeVisible();
+  await expect(page.locator('footer a[aria-label="LinkedIn"]')).toHaveAttribute("href", "https://mg.linkedin.com/in/ranaivoarisoa");
   await expect(
     page.locator('#contact a[href="https://wa.me/261349403247"]'),
   ).toBeVisible();
