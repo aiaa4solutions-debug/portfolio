@@ -89,6 +89,10 @@ export function Hero() {
             />
           </p>
 
+          <p className="mt-6 max-w-xl border-l-2 border-cyan-400/60 pl-4 text-sm leading-relaxed text-foreground">
+            <Translated text="Less repetitive work. Connected tools. Business data you can act on." />
+          </p>
+
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button size="lg" variant="accent" asChild>
               <a href="#projects">

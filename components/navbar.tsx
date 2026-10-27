@@ -50,7 +50,7 @@ export function Navbar() {
         >
           <Terminal className="h-4 w-4 text-accent" aria-hidden="true" />
           <span>
-            heri<span className="text-muted-foreground">.dev</span>
+            Herimalala<span className="hidden text-muted-foreground sm:inline"> / portfolio</span>
           </span>
         </Link>
 

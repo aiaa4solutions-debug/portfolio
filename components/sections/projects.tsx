@@ -25,7 +25,7 @@ export function Projects() {
           <p className="mt-4 text-muted-foreground">
             <Translated
               text={
-                "A selection of products built around automation, integration and applied AI."
+                "From manual tasks to connected systems: explore the business purpose, implementation and benefits of each project."
               }
             />
           </p>
@@ -114,6 +114,21 @@ export function Projects() {
                 <Translated text={project.detail} />
               </p>
 
+              {project.featured && (
+                <dl className="mt-6 grid gap-3 sm:grid-cols-3">
+                  {[
+                    ["3 exchanges", "Binance, Coinbase and Bitfinex in one dashboard."],
+                    ["Shared connections", "One WebSocket per exchange, per server instance."],
+                    ["Designed for interruptions", "Automatic reconnection, simulation fallback and dropped-trade metrics."],
+                  ].map(([title, description]) => (
+                    <div key={title} className="rounded-lg border border-cyan-400/20 bg-cyan-400/5 p-4">
+                      <dt className="text-sm font-semibold text-accent"><Translated text={title} /></dt>
+                      <dd className="mt-2 text-sm leading-relaxed text-muted-foreground"><Translated text={description} /></dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+
               {project.featured && project.href && (
                 <div className="mt-6 flex flex-wrap items-center gap-4">
                   <Button
@@ -149,9 +164,16 @@ export function Projects() {
                 </Button>
               )}
               <div className="mt-auto pt-6">
-                <p className="font-mono text-xs text-accent">
-                  <Translated text={project.metric} />
-                </p>
+                {!project.featured && (
+                  <div className="rounded-lg border border-border bg-muted/40 p-4">
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      <Translated text="Business benefit" />
+                    </p>
+                    <p className="mt-2 font-medium text-accent">
+                      <Translated text={project.metric} />
+                    </p>
+                  </div>
+                )}
                 <div className="mt-3 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
                     <Badge key={tech} variant="indigo">
