@@ -5,6 +5,7 @@ export interface Project {
   detail: string;
   stack: string[];
   metric: string;
+  cover?: string;
   preview?: { src: string; description: string };
   /** Internal page of the project, when it has a live demo. */
   href?: string;
@@ -15,6 +16,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "btc-realtime-feed",
+    cover: "/images/projects/btc-realtime.png",
     title: "Real-Time BTC Multi-Exchange Feed",
     description:
       "A live dashboard comparing Bitcoin trades from Binance, Coinbase and Bitfinex, with price curves and the spread between exchanges.",
@@ -28,7 +30,7 @@ export const projects: Project[] = [
   {
     slug: "ai-document-assistant",
     preview: {
-      src: "/images/projects/ai-document-assistant.png",
+      src: "/images/projects/ai-document-assistant-preview.png",
       description:
         "Demo interface showing an invoice, OCR regions and structured extracted fields.",
     },
@@ -43,7 +45,7 @@ export const projects: Project[] = [
   {
     slug: "workflow-automation",
     preview: {
-      src: "/images/projects/workflow-automation.png",
+      src: "/images/projects/workflow-automation-preview.png",
       description:
         "Demo workflow showing a webhook, API validation, PostgreSQL and automated notifications.",
     },
@@ -58,7 +60,7 @@ export const projects: Project[] = [
   {
     slug: "crm-automation-platform",
     preview: {
-      src: "/images/projects/crm-automation-platform.png",
+      src: "/images/projects/crm-automation-platform-preview.png",
       description:
         "Demo sales pipeline with lead cards, follow-up tasks and customer activity.",
     },
@@ -73,7 +75,7 @@ export const projects: Project[] = [
   {
     slug: "marketing-dashboard",
     preview: {
-      src: "/images/projects/marketing-dashboard.png",
+      src: "/images/projects/marketing-dashboard-preview.png",
       description:
         "Demo marketing dashboard with campaign trends, channel metrics and performance comparison.",
     },

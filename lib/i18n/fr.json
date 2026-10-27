@@ -196,5 +196,10 @@
   "Demo interface showing an invoice, OCR regions and structured extracted fields.": "Interface de démonstration avec facture, zones OCR et champs structurés extraits.",
   "Demo workflow showing a webhook, API validation, PostgreSQL and automated notifications.": "Workflow de démonstration reliant webhook, validation API, PostgreSQL et notifications automatiques.",
   "Demo sales pipeline with lead cards, follow-up tasks and customer activity.": "Pipeline commercial de démonstration avec prospects, relances et activité client.",
-  "Demo marketing dashboard with campaign trends, channel metrics and performance comparison.": "Tableau de bord marketing de démonstration : tendances, indicateurs par canal et comparaison des campagnes."
+  "Demo marketing dashboard with campaign trends, channel metrics and performance comparison.": "Tableau de bord marketing de démonstration : tendances, indicateurs par canal et comparaison des campagnes.",
+  "Explore the interactive demo": "Explorer la démo interactive",
+  "3 exchanges · Curves · Price spreads": "3 plateformes · Courbes · Écarts de prix",
+  "Interface preview · Simulation mode": "Aperçu de l’interface · Mode simulation",
+  "Open the Bitcoin dashboard": "Ouvrir le tableau de bord Bitcoin",
+  "Bitcoin multi-exchange dashboard with price curves in simulation mode": "Tableau de bord Bitcoin multi-plateformes avec courbes de prix en mode simulation"
 }
