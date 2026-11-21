@@ -117,7 +117,7 @@ export function ProjectDetails({ project }: { project: Project }) {
             <Translated text="TypeScript SDK" />
           </h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            <Translated text="The TypeScript SDK connects to a running ReactiveCore API. It provides a React hook for React and Next.js and a Vue composable for Vue and Nuxt. Both integrations support live queries and share the same IndexedDB queue for offline writes." />
+            <Translated text="Add live queries and offline mutations to an existing React, Next.js, Vue or Nuxt app. The SDK connects to a running ReactiveCore API. The backend runs an API and an outbox worker. Connect them to a PostgreSQL or MySQL database and a Redis instance of your choice." />
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Button variant="outline" asChild>
