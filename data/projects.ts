@@ -29,7 +29,7 @@ export const projects: Project[] = [
     detail:
       "The backend runs an API and an outbox worker backed by PostgreSQL or, with MultiDB, MySQL in preview, alongside a Redis instance. The worker processes committed changes so subscriptions can refresh over Server-Sent Events (SSE).",
     stack: ["TypeScript", "NestJS", "PostgreSQL", "Redis", "SSE", "IndexedDB"],
-    metric: "Keep applications usable during network interruptions",
+    metric: "Keep working through network outages and sync pending changes when the connection returns.",
     releaseStatus: "Alpha release · MySQL in preview",
     fullWidth: true,
     walkthrough: {
