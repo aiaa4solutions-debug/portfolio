@@ -33,7 +33,7 @@ function TerminalWindow() {
           <div key={line.prompt}>
             <div className="flex gap-2">
               <span className="text-accent">➜</span>
-              <span className="text-indigo-400">{line.prompt}</span>
+              <span className="text-indigo-700 dark:text-indigo-400">{line.prompt}</span>
             </div>
             <p className="pl-5 text-muted-foreground">
               <Translated text={line.output} />

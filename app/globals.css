@@ -22,7 +22,8 @@
     --ring: 239 84% 67%;
     --primary: 239 84% 67%;
     --primary-foreground: 210 40% 98%;
-    --accent: 188 94% 43%;
+    --accent: 190 92% 26%;
+    --accent-fill: 188 94% 43%;
     --accent-foreground: 222 47% 11%;
     --radius: 0.625rem;
   }
@@ -74,7 +75,7 @@
   }
 
   .gradient-text {
-    @apply bg-linear-to-r from-indigo-400 via-indigo-500 to-cyan-400 bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-indigo-700 to-cyan-800 bg-clip-text text-transparent dark:from-indigo-400 dark:via-indigo-500 dark:to-cyan-400;
   }
 
   .glow {

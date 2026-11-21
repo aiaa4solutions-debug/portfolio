@@ -47,8 +47,8 @@ export function ProjectModal({
       }}
       className="fixed inset-0 m-auto max-h-[92dvh] w-[min(96vw,1200px)] max-w-none overflow-auto rounded-xl border border-border bg-card p-0 text-foreground shadow-2xl backdrop:bg-black/80"
     >
-      <div className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-border bg-card/95 p-4 backdrop-blur-md">
-        <h2 id={headingId} className="min-w-0 text-sm font-semibold">
+      <div className="sticky top-0 z-20 flex items-center justify-between gap-2 border-b border-border bg-card/95 p-3 backdrop-blur-md sm:gap-4 sm:p-4">
+        <h2 id={headingId} className="min-w-0 text-sm font-semibold leading-snug [overflow-wrap:anywhere]">
           {t("Project details")}: {t(title)}
         </h2>
         <div className="flex shrink-0 items-center gap-2">
@@ -56,7 +56,7 @@ export function ProjectModal({
           <a
             href={href}
             aria-label={t("Open full page")}
-            className="rounded-md border border-border p-2 hover:bg-muted"
+            className="grid size-11 place-items-center rounded-md border border-border hover:bg-muted"
           >
             <ExternalLink className="h-5 w-5" aria-hidden="true" />
           </a>
@@ -64,7 +64,7 @@ export function ProjectModal({
             type="button"
             onClick={close}
             aria-label={t("Close project details")}
-            className="rounded-md border border-border p-2 hover:bg-muted"
+            className="grid size-11 place-items-center rounded-md border border-border hover:bg-muted"
           >
             <X className="h-5 w-5" aria-hidden="true" />
           </button>

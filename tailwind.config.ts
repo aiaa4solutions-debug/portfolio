@@ -35,6 +35,7 @@ const config: Config = {
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
+          fill: "hsl(var(--accent-fill))",
           foreground: "hsl(var(--accent-foreground))",
         },
         card: {

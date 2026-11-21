@@ -37,8 +37,9 @@ export function Projects() {
                 className={
                   "reveal " +
                   cn(
-                    "group relative flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-indigo-500/40",
+                    "group relative flex h-full min-w-0 flex-col rounded-xl border border-border bg-card p-4 transition-colors focus-within:border-indigo-500/55 hover:border-indigo-500/40 sm:p-6",
                     (project.featured || project.fullWidth) && "md:col-span-2",
+                    project.fullWidth && "border-accent/30 sm:p-8",
                   )
                 }
               >
@@ -84,7 +85,7 @@ export function Projects() {
                   />
                 )}
                 <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-xl font-semibold">
+                  <h3 className={cn("min-w-0 text-xl font-semibold leading-tight", project.fullWidth && "sm:text-2xl")}>
                     {project.href ? (
                       <Link
                         href={project.href}
@@ -105,7 +106,7 @@ export function Projects() {
                   )}
                 </div>
 
-                <p className="mt-3 text-sm text-muted-foreground">
+                <p className="mt-3 max-w-[72ch] text-sm leading-relaxed text-muted-foreground">
                   <Translated text={project.description} />
                 </p>
                 {project.releaseStatus && (
@@ -113,17 +114,17 @@ export function Projects() {
                     <Translated text={project.releaseStatus} />
                   </p>
                 )}
-                <p className="mt-3 text-sm text-muted-foreground">
+                <p className="mt-3 max-w-[72ch] text-sm leading-relaxed text-muted-foreground">
                   <Translated text={project.detail} />
                 </p>
                 {project.npmPackage && (
-                  <div className="mt-5 rounded-lg border border-border bg-muted/40 p-4">
+                  <div className="mt-5 rounded-lg border border-accent/25 bg-muted/40 p-4 sm:p-5">
                     <h4 className="font-semibold">
-                      <a className="text-accent underline" href={project.npmPackage.href}>
+                      <a className="inline-flex min-h-11 items-center text-accent underline underline-offset-4" href={project.npmPackage.href}>
                         {project.npmPackage.name} · npm
                       </a>
                     </h4>
-                    <p className="mt-2 text-sm text-muted-foreground">
+                    <p className="max-w-[72ch] text-sm leading-relaxed text-muted-foreground">
                       <Translated text={project.npmPackage.summary} />
                     </p>
                   </div>
@@ -171,7 +172,7 @@ export function Projects() {
                   </div>
                 )}
                 {!project.featured && project.href && (
-                  <Button variant="outline" className="mt-6 w-fit" asChild>
+                  <Button variant="outline" className="mt-6 min-h-11 w-fit max-w-full whitespace-normal" asChild>
                     <Link href={project.href} scroll={false}>
                       <Translated text="View project details" />
                       <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -184,7 +185,7 @@ export function Projects() {
                       <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
                         <Translated text="Business objective" />
                       </p>
-                      <p className="mt-2 font-medium text-accent">
+                    <p className="mt-2 max-w-[72ch] font-medium leading-relaxed text-foreground">
                         <Translated text={project.metric} />
                       </p>
                     </div>
