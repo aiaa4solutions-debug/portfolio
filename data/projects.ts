@@ -10,7 +10,7 @@ export interface Project {
   fullWidth?: boolean;
   walkthrough?: { steps: string[]; href: string };
   backendRepositories?: { label: string; href: string }[];
-  npmPackage?: { name: string; href: string; sourceHref: string };
+  npmPackage?: { name: string; href: string; sourceHref: string; summary: string };
   cover?: string;
   preview?: { src: string; description: string };
   /** Internal page of the project, when it has a live demo. */
@@ -25,9 +25,9 @@ export const projects: Project[] = [
     href: "/projects/reactivecore",
     title: "ReactiveCore — Real-time backend and offline sync",
     description:
-      "A self-hosted backend (BaaS) for live queries and offline mutations in existing React, Next.js, Vue, and Nuxt apps, with the reactivecore-client TypeScript SDK.",
+      "A self-hosted backend (BaaS) that exposes application queries and mutations over HTTP and delivers live updates over SSE.",
     detail:
-      "The backend runs an API and an outbox worker backed by PostgreSQL or, with MultiDB, MySQL in preview, alongside a Redis instance. The worker processes committed changes so subscriptions can refresh over Server-Sent Events (SSE). The SDK stores pending writes in IndexedDB and retries them with the original operation key to prevent duplicate writes.",
+      "The backend runs an API and an outbox worker backed by PostgreSQL or, with MultiDB, MySQL in preview, alongside a Redis instance. The worker processes committed changes so subscriptions can refresh over Server-Sent Events (SSE).",
     stack: ["TypeScript", "NestJS", "PostgreSQL", "Redis", "SSE", "IndexedDB"],
     metric: "Keep applications usable during network interruptions",
     releaseStatus: "Alpha release · MySQL in preview",
@@ -52,6 +52,7 @@ export const projects: Project[] = [
     ],
     npmPackage: {
       name: "reactivecore-client",
+      summary: "A standalone TypeScript client library published on npm for React, Next.js, Vue, and Nuxt. Connect it to an existing ReactiveCore API to add live queries and queue offline writes in IndexedDB. It retries pending writes with the original operation key to avoid duplicates.",
       href: "https://www.npmjs.com/package/reactivecore-client",
       sourceHref: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-sdk",
     },

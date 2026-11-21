@@ -116,6 +116,18 @@ export function Projects() {
                 <p className="mt-3 text-sm text-muted-foreground">
                   <Translated text={project.detail} />
                 </p>
+                {project.npmPackage && (
+                  <div className="mt-5 rounded-lg border border-border bg-muted/40 p-4">
+                    <h4 className="font-semibold">
+                      <a className="text-accent underline" href={project.npmPackage.href}>
+                        {project.npmPackage.name} · npm
+                      </a>
+                    </h4>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      <Translated text={project.npmPackage.summary} />
+                    </p>
+                  </div>
+                )}
 
                 {project.featured && (
                   <dl className="mt-6 grid gap-3 sm:grid-cols-3">
