@@ -12,6 +12,7 @@
   "Source code": "Code source",
   "Backend source · MultiDB": "Code du backend · MultiDB",
   "TypeScript SDK": "SDK TypeScript",
+  "SDK source · TypeScript": "Code du SDK · TypeScript",
   "Original PostgreSQL release": "Version initiale PostgreSQL",
   "Compare the time per run with and without the workflow, including time spent monitoring runs and correcting errors.": "Comparer le temps par exécution avec et sans le workflow, en incluant la supervision et la correction des erreurs.",
   "Passing data between tools by hand adds repetitive work and delays notifications.": "Le transfert manuel de données entre les outils crée des tâches répétitives et retarde les notifications.",

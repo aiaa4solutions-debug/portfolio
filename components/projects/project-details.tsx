@@ -111,6 +111,20 @@ export function ProjectDetails({ project }: { project: Project }) {
           </a>
         </section>
       )}
+      {project.npmPackage && (
+        <section className="mt-8">
+          <h2 className="text-lg font-semibold">
+            <Translated text="TypeScript SDK" />
+          </h2>
+          <Button variant="outline" className="mt-3" asChild>
+            <a href={project.npmPackage.href}>
+              {project.npmPackage.name}
+              <span aria-hidden="true">·</span>
+              npm
+            </a>
+          </Button>
+        </section>
+      )}
       {project.repositories && (
         <section className="mt-8">
           <h2 className="text-lg font-semibold"><Translated text="Source code" /></h2>

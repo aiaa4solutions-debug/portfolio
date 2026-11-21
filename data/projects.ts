@@ -10,6 +10,7 @@ export interface Project {
   fullWidth?: boolean;
   walkthrough?: { steps: string[]; href: string };
   repositories?: { label: string; href: string }[];
+  npmPackage?: { name: string; href: string };
   cover?: string;
   preview?: { src: string; description: string };
   /** Internal page of the project, when it has a live demo. */
@@ -45,7 +46,7 @@ export const projects: Project[] = [
         href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-multidb",
       },
       {
-        label: "TypeScript SDK",
+        label: "SDK source · TypeScript",
         href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-sdk",
       },
       {
@@ -53,6 +54,10 @@ export const projects: Project[] = [
         href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore",
       },
     ],
+    npmPackage: {
+      name: "reactivecore-client",
+      href: "https://www.npmjs.com/package/reactivecore-client",
+    },
   },
   {
     slug: "ai-document-assistant",
