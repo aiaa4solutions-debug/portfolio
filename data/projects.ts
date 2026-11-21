@@ -5,6 +5,7 @@ export interface Project {
   detail: string;
   stack: string[];
   metric: string;
+  caseStudy?: { problem: string; measurement: string };
   cover?: string;
   preview?: { src: string; description: string };
   /** Internal page of the project, when it has a live demo. */
@@ -14,19 +15,6 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  {
-    slug: "btc-realtime-feed",
-    cover: "/images/projects/btc-realtime.png",
-    title: "Real-Time BTC Multi-Exchange Feed",
-    description:
-      "A live dashboard comparing Bitcoin trades from Binance, Coinbase and Bitfinex, with price curves and the spread between exchanges.",
-    detail:
-      "A shared server hub keeps one resilient WebSocket connection per exchange and relays normalized trades over Server-Sent Events to a React dashboard. It converts USDT prices to USD, tracks the spread between exchanges, falls back to simulated data when the exchanges are unreachable, and exposes per-exchange status, latency and reconnection metrics.",
-    stack: ["Next.js", "TypeScript", "WebSocket", "SSE", "Recharts"],
-    metric: "3 exchanges · live demo",
-    href: "/projects/btc-realtime",
-    featured: true,
-  },
   {
     slug: "ai-document-assistant",
     href: "/projects/ai-document-assistant",
@@ -39,9 +27,9 @@ export const projects: Project[] = [
     description:
       "Extracts structured information from documents automatically using OCR and the OpenAI API.",
     detail:
-      "A Python service that ingests scanned or digital documents, runs OCR to recover text, then uses the OpenAI API to identify and structure the relevant fields — turning unstructured paperwork into usable data with no manual entry.",
+      "The concept uses a Python service to read scanned or digital documents, recover the text with OCR and structure selected fields with the OpenAI API.",
     stack: ["Python", "FastAPI", "OpenAI API", "OCR"],
-    metric: "Removes manual data entry",
+    metric: "Reduce manual data entry",
   },
   {
     slug: "workflow-automation",
@@ -53,11 +41,15 @@ export const projects: Project[] = [
     },
     title: "Workflow Automation",
     description:
-      "Automated workflows that cut manual tasks and streamline business processes end to end.",
+      "An n8n workflow concept for synchronizing data and sending notifications across tools.",
     detail:
-      "A set of n8n workflows connected to internal APIs and a PostgreSQL data layer, replacing manual handoffs between tools with triggers that run automatically — from data sync to notifications and reporting.",
+      "The workflow design uses a webhook to start the process, validates incoming data through an API, stores it in PostgreSQL and sends a notification.",
     stack: ["n8n", "Node.js", "PostgreSQL", "REST API"],
-    metric: "Fewer manual handoffs",
+    metric: "Reduce manual handoffs",
+    caseStudy: {
+      problem: "Passing data between tools by hand adds repetitive work and delays notifications.",
+      measurement: "Compare the time per run with and without the workflow, including time spent monitoring runs and correcting errors.",
+    },
   },
   {
     slug: "crm-automation-platform",
@@ -71,9 +63,9 @@ export const projects: Project[] = [
     description:
       "A sales management platform that connects several APIs and automates the surrounding workflows.",
     detail:
-      "A Next.js and TypeScript application backed by PostgreSQL, built to centralize customer data and automate the follow-up work — reminders, status updates and integrations — that used to happen manually.",
+      "The concept uses Next.js, TypeScript and PostgreSQL to model customer records, reminders, status updates and integrations.",
     stack: ["Next.js", "TypeScript", "PostgreSQL"],
-    metric: "Centralized customer data",
+    metric: "Centralize customer data",
   },
   {
     slug: "marketing-dashboard",
@@ -87,9 +79,22 @@ export const projects: Project[] = [
     description:
       "A dashboard for automated tracking of marketing campaigns across platforms.",
     detail:
-      "A React and TypeScript dashboard that pulls campaign data from the Facebook and Google Ads APIs into one view, replacing manual exports with live, comparable metrics.",
+      "The concept uses React and TypeScript to show how Facebook and Google Ads campaign data could be compared in one dashboard.",
     stack: ["React", "TypeScript", "Facebook API", "Google Ads API"],
-    metric: "One view across platforms",
+    metric: "Bring campaign data into one view",
+  },
+  {
+    slug: "btc-realtime-feed",
+    cover: "/images/projects/btc-realtime.png",
+    title: "Real-Time BTC Multi-Exchange Feed",
+    description:
+      "A live dashboard comparing Bitcoin trades from Binance, Coinbase and Bitfinex, with price curves and the spread between exchanges.",
+    detail:
+      "A shared server hub keeps one resilient WebSocket connection per exchange and relays normalized trades over Server-Sent Events to a React dashboard. It converts USDT prices to USD, tracks the spread between exchanges, falls back to simulated data when the exchanges are unreachable, and exposes per-exchange status, latency and reconnection metrics.",
+    stack: ["Next.js", "TypeScript", "WebSocket", "SSE", "Recharts"],
+    metric: "3 exchanges · live demo",
+    href: "/projects/btc-realtime",
+    featured: true,
   },
 ];
 

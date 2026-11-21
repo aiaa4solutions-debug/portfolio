@@ -17,7 +17,7 @@ export function Experience() {
           <p className="mt-4 text-muted-foreground">
             <Translated
               text={
-                "Roughly eight years across freelance, agency and consulting work, from frontend interfaces to full backend systems."
+                "Building web applications since 2016 across freelance, agency and consulting work, from frontend interfaces to backend services."
               }
             />
           </p>
@@ -59,6 +59,12 @@ export function Experience() {
                   </Badge>
                 )}
               </div>
+
+              {job.overlap && (
+                <p className="mt-2 text-sm text-muted-foreground">
+                  <Translated text={job.overlap} />
+                </p>
+              )}
 
               <ul className="mt-4 space-y-1.5">
                 {job.points.map((point) => (

@@ -54,21 +54,41 @@ export function ProjectDetails({ project }: { project: Project }) {
         </figure>
       )}
       <div className="mt-8 grid gap-6 sm:grid-cols-[2fr_1fr]">
-        <section>
-          <h2 className="text-lg font-semibold">
-            <Translated text="Implementation" />
-          </h2>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            <Translated text={project.detail} />
-          </p>
-        </section>
+        <div className="space-y-6">
+          {project.caseStudy && (
+            <section>
+              <h2 className="text-lg font-semibold"><Translated text="Problem" /></h2>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                <Translated text={project.caseStudy.problem} />
+              </p>
+            </section>
+          )}
+          <section>
+            <h2 className="text-lg font-semibold">
+              <Translated text={project.caseStudy ? "Workflow design" : "Technical design"} />
+            </h2>
+            <p className="mt-3 leading-relaxed text-muted-foreground">
+              <Translated text={project.detail} />
+            </p>
+          </section>
+        </div>
         <section className="rounded-lg border border-border bg-muted/30 p-5">
           <h2 className="text-lg font-semibold">
-            <Translated text="Outcome" />
+            <Translated text="Business objective" />
           </h2>
           <p className="mt-3 text-accent">
             <Translated text={project.metric} />
           </p>
+          {project.caseStudy && (
+            <>
+              <h3 className="mt-5 text-sm font-semibold">
+                <Translated text="How to measure impact" />
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                <Translated text={project.caseStudy.measurement} />
+              </p>
+            </>
+          )}
         </section>
       </div>
       <Button variant="accent" className="mt-8" asChild>

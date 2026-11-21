@@ -167,7 +167,7 @@ export function Projects() {
                 {!project.featured && (
                   <div className="rounded-lg border border-border bg-muted/40 p-4">
                     <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      <Translated text="Business benefit" />
+                      <Translated text="Business objective" />
                     </p>
                     <p className="mt-2 font-medium text-accent">
                       <Translated text={project.metric} />

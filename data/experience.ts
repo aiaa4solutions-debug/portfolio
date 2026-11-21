@@ -4,6 +4,7 @@ export interface Experience {
   location: string;
   period: string;
   current?: boolean;
+  overlap?: string;
   points: string[];
   stack: string[];
 }
@@ -15,6 +16,7 @@ export const experience: Experience[] = [
     location: "Remote",
     period: "May 2024 — Present",
     current: true,
+    overlap: "Started alongside my role at BDO IT Consulting from May to November 2024.",
     points: [
       "Building SaaS applications for multiple clients using Next.js, Node.js and PostgreSQL",
       "Designing REST APIs and integrating third-party services",
@@ -43,6 +45,7 @@ export const experience: Experience[] = [
     company: "RAPP IO",
     location: "Mauritius",
     period: "Jun 2023 — Dec 2023",
+    overlap: "Held alongside my role at La Solution Multitech from June to August 2023.",
     points: [
       "Built React interfaces for client-facing products",
       "Developed features in TypeScript across the frontend codebase",

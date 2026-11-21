@@ -42,7 +42,7 @@ export function About() {
             <p className="mt-4 text-muted-foreground">
               <Translated
                 text={
-                  "Over the past several months I've been building solutions that integrate AI — using the OpenAI API, document processing and automated workflows to turn manual tasks into systems that run themselves. I'm looking for a team where I can keep learning and contribute to work that matters."
+                  "In my freelance work, I use the OpenAI API for document processing and n8n to automate recurring tasks. I’m open to freelance projects and full-time roles involving web applications, API integrations or automation."
                 }
               />
             </p>
