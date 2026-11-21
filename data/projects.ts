@@ -25,9 +25,9 @@ export const projects: Project[] = [
     href: "/projects/reactivecore",
     title: "ReactiveCore — Real-time backend and offline sync",
     description:
-      "A self-hosted backend-as-a-service platform for real-time queries, with a TypeScript client library that queues writes when the connection drops.",
+      "A self-hosted backend (BaaS) for live queries and offline mutations in existing React, Next.js, Vue, and Nuxt apps, with the reactivecore-client TypeScript SDK.",
     detail:
-      "The backend commits changes in PostgreSQL transactions and uses an outbox worker to refresh subscriptions over Server-Sent Events. The TypeScript SDK persists pending writes in IndexedDB and retries with the original operation key so a retried write is applied only once.",
+      "The backend runs an API and an outbox worker backed by PostgreSQL or, with MultiDB, MySQL in preview, alongside a Redis instance. The worker processes committed changes so subscriptions can refresh over Server-Sent Events (SSE). The SDK stores pending writes in IndexedDB and retries them with the original operation key to prevent duplicate writes.",
     stack: ["TypeScript", "NestJS", "PostgreSQL", "Redis", "SSE", "IndexedDB"],
     metric: "Keep applications usable during network interruptions",
     releaseStatus: "Alpha release · MySQL in preview",
