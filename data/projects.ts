@@ -9,8 +9,8 @@ export interface Project {
   releaseStatus?: string;
   fullWidth?: boolean;
   walkthrough?: { steps: string[]; href: string };
-  repositories?: { label: string; href: string }[];
-  npmPackage?: { name: string; href: string };
+  backendRepositories?: { label: string; href: string }[];
+  npmPackage?: { name: string; href: string; sourceHref: string };
   cover?: string;
   preview?: { src: string; description: string };
   /** Internal page of the project, when it has a live demo. */
@@ -25,7 +25,7 @@ export const projects: Project[] = [
     href: "/projects/reactivecore",
     title: "ReactiveCore — Real-time backend and offline sync",
     description:
-      "A self-hosted backend that streams updates to apps and lets them queue changes when the connection drops.",
+      "A self-hosted backend-as-a-service platform for real-time queries, with a TypeScript client library that queues writes when the connection drops.",
     detail:
       "The backend commits changes in PostgreSQL transactions and uses an outbox worker to refresh subscriptions over Server-Sent Events. The TypeScript SDK persists pending writes in IndexedDB and retries with the original operation key so a retried write is applied only once.",
     stack: ["TypeScript", "NestJS", "PostgreSQL", "Redis", "SSE", "IndexedDB"],
@@ -40,23 +40,20 @@ export const projects: Project[] = [
       ],
       href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-sdk#6-queue-and-cancel-an-offline-mutation",
     },
-    repositories: [
+    backendRepositories: [
       {
-        label: "Backend source · MultiDB",
+        label: "ReactiveCore MultiDB · PostgreSQL · MySQL preview",
         href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-multidb",
       },
       {
-        label: "SDK source · TypeScript",
-        href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-sdk",
-      },
-      {
-        label: "Original PostgreSQL release",
+        label: "ReactiveCore · Original PostgreSQL backend",
         href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore",
       },
     ],
     npmPackage: {
       name: "reactivecore-client",
       href: "https://www.npmjs.com/package/reactivecore-client",
+      sourceHref: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-sdk",
     },
   },
   {

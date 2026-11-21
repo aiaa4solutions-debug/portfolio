@@ -116,22 +116,29 @@ export function ProjectDetails({ project }: { project: Project }) {
           <h2 className="text-lg font-semibold">
             <Translated text="TypeScript SDK" />
           </h2>
-          <Button variant="outline" className="mt-3" asChild>
-            <a href={project.npmPackage.href}>
-              {project.npmPackage.name}
-              <span aria-hidden="true">·</span>
-              npm
-            </a>
-          </Button>
+          <p className="mt-2 text-sm text-muted-foreground">
+            <Translated text="The TypeScript SDK connects to a running ReactiveCore API. It provides a React hook for React and Next.js and a Vue composable for Vue and Nuxt. Both integrations support live queries and share the same IndexedDB queue for offline writes." />
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Button variant="outline" asChild>
+              <a href={project.npmPackage.href}>{project.npmPackage.name} · npm</a>
+            </Button>
+            <Button variant="outline" asChild>
+              <a href={project.npmPackage.sourceHref}><Translated text="SDK source code" /></a>
+            </Button>
+          </div>
         </section>
       )}
-      {project.repositories && (
+      {project.backendRepositories && (
         <section className="mt-8">
-          <h2 className="text-lg font-semibold"><Translated text="Source code" /></h2>
+          <h2 className="text-lg font-semibold"><Translated text="Self-hosted backend" /></h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            <Translated text="MultiDB continues the original PostgreSQL backend and adds preview support for MySQL." />
+          </p>
           <ul className="mt-3 flex flex-wrap gap-2">
-            {project.repositories.map(({ label, href }) => (
+            {project.backendRepositories.map(({ label, href }) => (
               <li key={href}>
-                <Button variant="outline" asChild>
+                <Button variant="outline" className="h-auto whitespace-normal py-2" asChild>
                   <a href={href}><Translated text={label} /></a>
                 </Button>
               </li>
