@@ -132,7 +132,6 @@
   "A dashboard for automated tracking of marketing campaigns across platforms.": "Un tableau de bord pour suivre automatiquement les campagnes marketing sur plusieurs plateformes.",
   "The concept uses React and TypeScript to show how Facebook and Google Ads campaign data could be compared in one dashboard.": "Le concept montre, avec React et TypeScript, comment comparer les données de campagnes Facebook et Google Ads dans un même tableau de bord.",
   "Back to projects": "Retour aux projets",
-  "View the source": "Voir le code source",
   "How it was built": "Les choix de conception",
   "Collecting the first points...": "Collecte des premiers points…",
   "Keyboard: left and right arrows to browse the values, Escape to close.": "Clavier : flèches gauche et droite pour parcourir les valeurs, Échap pour fermer.",

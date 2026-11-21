@@ -1,4 +1,3 @@
-import { Github } from "@/components/ui/brand-icons";
 import { Translated } from "@/components/language-provider";
 import { CloseProjectPage } from "@/components/projects/project-details";
 import Link from "next/link";
@@ -8,9 +7,6 @@ import { CaseStudy } from "@/components/market/CaseStudy";
 import RealTimeDashboard from "@/components/market/RealTimeDashboard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-
-const SOURCE_URL =
-  "https://github.com/aiaa4solutions-debug/portfolio/tree/main/lib/market";
 
 const TECH = [
   "Next.js",
@@ -56,13 +52,6 @@ export function BtcProjectDetails({
             </li>
           ))}
         </ul>
-
-        <Button variant="outline" size="sm" className="mt-5" asChild>
-          <a href={SOURCE_URL} target="_blank" rel="noopener noreferrer">
-            <Github className="h-4 w-4" aria-hidden="true" />
-            <Translated text={"View the source"} />
-          </a>
-        </Button>
       </header>
 
       <RealTimeDashboard className="mt-10" />
