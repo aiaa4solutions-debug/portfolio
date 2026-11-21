@@ -6,6 +6,10 @@ export interface Project {
   stack: string[];
   metric: string;
   caseStudy?: { problem: string; measurement: string };
+  releaseStatus?: string;
+  fullWidth?: boolean;
+  walkthrough?: { steps: string[]; href: string };
+  repositories?: { label: string; href: string }[];
   cover?: string;
   preview?: { src: string; description: string };
   /** Internal page of the project, when it has a live demo. */
@@ -50,6 +54,41 @@ export const projects: Project[] = [
       problem: "Passing data between tools by hand adds repetitive work and delays notifications.",
       measurement: "Compare the time per run with and without the workflow, including time spent monitoring runs and correcting errors.",
     },
+  },
+  {
+    slug: "reactivecore",
+    href: "/projects/reactivecore",
+    title: "ReactiveCore — Real-time backend and offline sync",
+    description:
+      "A self-hosted backend that streams updates to apps and lets them queue changes when the connection drops.",
+    detail:
+      "The backend commits changes in PostgreSQL transactions and uses an outbox worker to refresh subscriptions over Server-Sent Events. The TypeScript SDK persists pending writes in IndexedDB and retries with the original operation key so a retried write is applied only once.",
+    stack: ["TypeScript", "NestJS", "PostgreSQL", "Redis", "SSE", "IndexedDB"],
+    metric: "Keep applications usable during network interruptions",
+    releaseStatus: "Alpha release · MySQL in preview",
+    fullWidth: true,
+    walkthrough: {
+      steps: [
+        "Go offline and create two items. The SDK saves both operations in IndexedDB.",
+        "Cancel one operation while it is still pending.",
+        "Reconnect. The remaining item appears once in the live list. The cancelled item stays out of the server list.",
+      ],
+      href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-sdk#6-queue-and-cancel-an-offline-mutation",
+    },
+    repositories: [
+      {
+        label: "Backend source · MultiDB",
+        href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-multidb",
+      },
+      {
+        label: "TypeScript SDK",
+        href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore-sdk",
+      },
+      {
+        label: "Original PostgreSQL release",
+        href: "https://github.com/herimalala-ranaivoarisoa-rivomanana/reactivecore",
+      },
+    ],
   },
   {
     slug: "crm-automation-platform",

@@ -9,7 +9,7 @@ import {
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() {
   return projects
-    .filter((project) => project.preview)
+    .filter((project) => project.href === `/projects/${project.slug}`)
     .map((project) => ({ slug: project.slug }));
 }
 export { generateProjectMetadata as generateMetadata } from "@/lib/project-metadata";

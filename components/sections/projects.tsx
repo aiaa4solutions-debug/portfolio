@@ -40,7 +40,7 @@ export function Projects() {
                 "reveal " +
                 cn(
                   "group relative flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-colors hover:border-indigo-500/40",
-                  project.featured && "md:col-span-2",
+                  (project.featured || project.fullWidth) && "md:col-span-2",
                 )
               }
             >
@@ -110,6 +110,11 @@ export function Projects() {
               <p className="mt-3 text-sm text-muted-foreground">
                 <Translated text={project.description} />
               </p>
+              {project.releaseStatus && (
+                <p className="mt-2 text-sm font-medium text-accent">
+                  <Translated text={project.releaseStatus} />
+                </p>
+              )}
               <p className="mt-3 text-sm text-muted-foreground">
                 <Translated text={project.detail} />
               </p>

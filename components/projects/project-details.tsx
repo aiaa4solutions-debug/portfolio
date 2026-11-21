@@ -31,6 +31,11 @@ export function ProjectDetails({ project }: { project: Project }) {
       <p className="mt-4 max-w-3xl text-muted-foreground">
         <Translated text={project.description} />
       </p>
+      {project.releaseStatus && (
+        <p className="mt-2 text-sm font-medium text-accent">
+          <Translated text={project.releaseStatus} />
+        </p>
+      )}
       <ul className="mt-5 flex flex-wrap gap-2">
         {project.stack.map((tech) => (
           <li key={tech}>
@@ -91,6 +96,35 @@ export function ProjectDetails({ project }: { project: Project }) {
           )}
         </section>
       </div>
+      {project.walkthrough && (
+        <section className="mt-8">
+          <h2 className="text-lg font-semibold">
+            <Translated text="Offline sync walkthrough" />
+          </h2>
+          <ol className="mt-3 list-decimal space-y-2 pl-5 text-muted-foreground">
+            {project.walkthrough.steps.map((step) => (
+              <li key={step}><Translated text={step} /></li>
+            ))}
+          </ol>
+          <a className="mt-3 inline-block text-accent underline" href={project.walkthrough.href}>
+            <Translated text="Read the SDK walkthrough" />
+          </a>
+        </section>
+      )}
+      {project.repositories && (
+        <section className="mt-8">
+          <h2 className="text-lg font-semibold"><Translated text="Source code" /></h2>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {project.repositories.map(({ label, href }) => (
+              <li key={href}>
+                <Button variant="outline" asChild>
+                  <a href={href}><Translated text={label} /></a>
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <Button variant="accent" className="mt-8" asChild>
         {/* Document navigation avoids modal cleanup overriding the contact scroll. */}
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
