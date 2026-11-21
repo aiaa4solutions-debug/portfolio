@@ -19,7 +19,7 @@ const TRAITS = [
     icon: Sparkles,
     title: "AI-forward",
     description:
-      "I bring OpenAI's API into real products — document processing, automation, assistants.",
+      "I integrate AI into applications to help users process information and complete tasks.",
   },
 ];
 
@@ -35,14 +35,14 @@ export function About() {
             <p className="mt-5 text-muted-foreground">
               <Translated
                 text={
-                  "I'm a Full Stack Developer specializing in modern web applications built with JavaScript, TypeScript and Python. I like designing applications that perform well, building APIs, and automating processes that make work simpler for the people using them."
+                  "I'm a full-stack developer working with JavaScript, TypeScript, and Python. I build web applications from user interfaces to APIs and backend services, including tools for real-time data and workflow automation."
                 }
               />
             </p>
             <p className="mt-4 text-muted-foreground">
               <Translated
                 text={
-                  "In my freelance work, I use the OpenAI API for document processing and n8n to automate recurring tasks. I’m open to freelance projects and full-time roles involving web applications, API integrations or automation."
+                  "In my freelance work, I help teams connect their tools, simplify workflows, and integrate AI where it serves a practical need. I’m open to freelance projects and full-time roles in full-stack development, integrations, and automation."
                 }
               />
             </p>
