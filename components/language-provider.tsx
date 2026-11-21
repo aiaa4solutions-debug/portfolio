@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
@@ -52,8 +53,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     browserLanguage,
     serverLanguage,
   );
+  const initialLayoutReady = useRef(false);
   useEffect(() => {
     document.documentElement.lang = language;
+    if (initialLayoutReady.current || language !== browserLanguage()) return;
+    initialLayoutReady.current = true;
+
+    // Translations can move a fragment target after the browser's initial scroll.
+    if (language !== serverLanguage()) {
+      document.querySelector(":target")?.scrollIntoView({ behavior: "instant" });
+    }
   }, [language]);
   function setLanguage(value: Language) {
     try {

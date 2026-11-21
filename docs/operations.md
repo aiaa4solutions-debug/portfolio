@@ -9,7 +9,7 @@ Then run `CI=1 MARKET_MODE=replay PLAYWRIGHT_USE_BUILD=1 npm run test:e2e`.
 E2E tests start the existing production build; CI builds once, explicitly.
 For a system Chromium, set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium`.
 Tests exercise simulated market data, not the availability of real exchanges.
-The build requires access to Google Fonts.
+Inter is bundled from the locked npm dependency, so builds do not fetch Google Fonts.
 
 CI runs on pull requests, pushes to main, manually, and weekly. It uses read-only
 GitHub permissions, pinned action commits, a frozen npm install, limited workers,
